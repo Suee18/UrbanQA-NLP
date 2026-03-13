@@ -34,6 +34,12 @@ PIPELINE = [
         "once": False,
         "desc": "Splits cleaned text into overlapping 3-sentence passages"
     },
+    {
+        "name": "Tokenizer",
+        "script": "src/preprocessing/tokenizer.py",
+        "once": False,
+        "desc": "Adds raw and normalized tokens to every passage"
+    },
 ]
 
 
