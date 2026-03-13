@@ -40,6 +40,12 @@ PIPELINE = [
         "once": False,
         "desc": "Adds raw and normalized tokens to every passage"
     },
+    {
+        "name": "NER and POS",
+        "script": "src/analysis/ner_pos.py",
+        "once": False,
+        "desc": "Tags named entities and POS for every passage"
+    },
 ]
 
 

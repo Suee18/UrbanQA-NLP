@@ -59,3 +59,5 @@ pip freeze > requirements.txt
 git add requirements.txt
 git commit -m "add new-library to requirements"
 ```
+
+Artifact :  https://claude.ai/public/artifacts/b7e9e903-5b6a-4232-a1c3-765bb8b09537
