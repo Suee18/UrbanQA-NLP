@@ -19,3 +19,15 @@ pip install new-library
 pip freeze > requirements.txt
 git add requirements.txt
 git commit -m "add new-library to requirements"
+
+
+# Main 
+# first time ever — runs everything including data collection
+python main.py
+
+# already have raw data, just rerun preprocessing
+python main.py --skip-collection
+
+# run one specific stage
+python main.py --stage cleaner
+python main.py --stage segmenter
