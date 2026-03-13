@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrbanQA — NLP Course Project</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f0e;
+    --bg2: #131614;
+    --bg3: #1a1d1b;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8ebe6;
+    --muted: #8a9186;
+    --accent: #b8e068;
+    --accent2: #68c4b8;
+    --accent3: #e8a84a;
+    --red: #e87a6a;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Syne', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,15,14,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 56px;
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 20px; letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 12px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+
+  section { padding: 5rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  /* ── HERO ── */
+  #hero {
+    padding: 9rem 0 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--text) 1px, transparent 1px),
+      linear-gradient(90deg, var(--text) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid rgba(184,224,104,0.3);
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+  }
+  h1.hero-title {
+    font-family: var(--serif); font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1.hero-title em { font-style: italic; color: var(--accent2); }
+  .hero-sub {
+    font-size: 17px; color: var(--muted); max-width: 540px;
+    margin-top: 1.5rem; line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-meta {
+    display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-item .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .hero-meta-item .val { font-size: 15px; font-weight: 500; color: var(--text); }
+
+  /* ── SECTION HEADERS ── */
+  .sec-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;
+  }
+  h2.sec-title {
+    font-family: var(--serif); font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .sec-body { color: var(--muted); max-width: 640px; line-height: 1.8; font-size: 15px; }
+
+  /* ── OVERVIEW CARDS ── */
+  .overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 2.5rem; }
+  .ov-card { background: var(--bg2); padding: 1.5rem; }
+  .ov-card .num { font-family: var(--serif); font-size: 36px; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .ov-card .ov-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+  .ov-card .ov-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ── PIPELINE ── */
+  .pipeline { margin-top: 3rem; position: relative; }
+  .pipe-step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .pipe-step.visible { opacity: 1; transform: none; }
+  .pipe-step:last-child { border-bottom: none; }
+  .step-circle {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; font-family: var(--mono);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .step-circle.c1 { background: rgba(184,224,104,0.12); color: var(--accent); border: 1px solid rgba(184,224,104,0.25); }
+  .step-circle.c2 { background: rgba(104,196,184,0.12); color: var(--accent2); border: 1px solid rgba(104,196,184,0.25); }
+  .step-circle.c3 { background: rgba(232,168,74,0.12); color: var(--accent3); border: 1px solid rgba(232,168,74,0.25); }
+  .step-circle.c4 { background: rgba(232,122,106,0.12); color: var(--red); border: 1px solid rgba(232,122,106,0.25); }
+  .step-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 0.5rem; flex-wrap: wrap; }
+  .step-name { font-size: 16px; font-weight: 600; color: var(--text); }
+  .step-phase {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 10px; font-weight: 500;
+  }
+  .phase-collect { background: rgba(184,224,104,0.1); color: var(--accent); }
+  .phase-process { background: rgba(104,196,184,0.1); color: var(--accent2); }
+  .phase-model { background: rgba(232,168,74,0.1); color: var(--accent3); }
+  .phase-eval { background: rgba(232,122,106,0.1); color: var(--red); }
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 0.75rem; }
+  .tools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--muted); padding: 3px 10px; border-radius: 4px;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-wrap { margin-top: 2.5rem; overflow-x: auto; }
+  .flow-svg-wrap { min-width: 680px; }
+
+  /* ── FEATURES ── */
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 2.5rem; }
+  .feat-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .feat-card:hover { border-color: var(--border2); background: var(--bg3); }
+  .feat-icon { font-size: 20px; margin-bottom: 0.75rem; }
+  .feat-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .feat-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* ── PLAN / TIMELINE ── */
+  .timeline { margin-top: 2.5rem; }
+  .week-row {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 1.5rem; padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .week-row:last-child { border-bottom: none; }
+  .week-label { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 500; padding-top: 2px; }
+  .week-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+  .week-tasks { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .week-tag {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.07em; padding: 2px 8px; border-radius: 10px;
+    font-weight: 500; margin-left: 8px; vertical-align: middle;
+  }
+  .tag-data { background: rgba(184,224,104,0.1); color: var(--accent); }
+  .tag-nlp { background: rgba(104,196,184,0.1); color: var(--accent2); }
+  .tag-model { background: rgba(232,168,74,0.1); color: var(--accent3); }
+  .tag-eval { background: rgba(232,122,106,0.1); color: var(--red); }
+
+  /* ── METRICS ── */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2rem; }
+  .metric-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem;
+    text-align: center;
+  }
+  .metric-name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4rem; }
+  .metric-val { font-family: var(--serif); font-size: 28px; color: var(--accent); line-height: 1; }
+  .metric-hint { font-size: 11px; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ── STRETCH ── */
+  .stretch-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+  .stretch-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.9rem 1.1rem; font-size: 13px; color: var(--muted);
+  }
+  .stretch-list li::before {
+    content: '→'; color: var(--accent); font-family: var(--mono); flex-shrink: 0;
+  }
+  .stretch-list strong { color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border); padding: 2rem 0;
+    text-align: center; font-size: 12px; color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.2rem; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .week-row { grid-template-columns: 80px 1fr; gap: 1rem; }
+    .pipe-step { grid-template-columns: 36px 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">UrbanQA</div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#flow">Flow</a>
+    <a href="#features">Features</a>
+    <a href="#plan">Plan</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="container">
+    <div class="hero-tag">NLP Course Project</div>
+    <h1 class="hero-title">Multi-City<br><em>Question Answering</em><br>System</h1>
+    <p class="hero-sub">An end-to-end NLP pipeline that collects, processes, and indexes knowledge about cities worldwide — then answers open-domain factual questions about any of them.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="label">Domain</span><span class="val">Urban / Cities</span></div>
+      <div class="hero-meta-item"><span class="label">Pipeline stages</span><span class="val">8 stages</span></div>
+      <div class="hero-meta-item"><span class="label">Approach</span><span class="val">Retrieval-augmented QA</span></div>
+      <div class="hero-meta-item"><span class="label">Languages</span><span class="val">English (+ Arabic stretch)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<section id="overview">
+  <div class="container">
+    <div class="sec-label">Overview</div>
+    <h2 class="sec-title">What the project does</h2>
+    <p class="sec-body">UrbanQA builds a retrieval-based question answering system over a multi-city knowledge corpus. Given a natural language question about any covered city — its history, geography, governance, economy, landmarks — the system retrieves the most relevant passages and extracts a precise answer span. Every stage of the standard NLP pipeline is implemented from scratch, from raw data collection to evaluation.</p>
+    <div class="overview-grid">
+      <div class="ov-card">
+        <div class="num">20+</div>
+        <div class="ov-title">Cities covered</div>
+        <div class="ov-body">Major world cities across regions — capitals, megacities, historic urban centers.</div>
+      </div>
+      <div class="ov-card">
+        <div class="num">8</div>
+        <div class="ov-title">Pipeline stages</div>
+        <div class="ov-body">From raw scraping through preprocessing, NER, retrieval, QA extraction, and evaluation.</div>
+      </div>
+      <div class="ov-card">
+        <div class="num">100+</div>
+        <div class="ov-title">Gold QA pairs</div>
+        <div class="ov-body">Manually annotated question–answer pairs across cities for rigorous evaluation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PIPELINE ═══════════════ -->
+<section id="pipeline">
+  <div class="container">
+    <div class="sec-label">NLP Pipeline</div>
+    <h2 class="sec-title">Eight-stage pipeline</h2>
+    <p class="sec-body">Every step justifies its place. No black-box shortcuts — each module is implemented, analyzable, and replaceable.</p>
+
+    <div class="pipeline">
+
+      <div class="pipe-step">
+        <div class="step-circle c1">01</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Data Collection</span>
+            <span class="step-phase phase-collect">Collection</span>
+          </div>
+          <p class="step-desc">Scrape Wikipedia articles for 20+ target cities using the Wikipedia API. Supplement with city tourism portals, municipal "About" pages, and optionally news headlines via NewsAPI or RSS feeds. Store raw HTML and plain text separately for reproducibility.</p>
+          <div class="tools">
+            <span class="tool">wikipedia-api</span>
+            <span class="tool">BeautifulSoup4</span>
+            <span class="tool">newspaper3k</span>
+            <span class="tool">requests</span>
+            <span class="tool">NewsAPI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c2">02</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Preprocessing & Segmentation</span>
+            <span class="step-phase phase-process">Processing</span>
+          </div>
+          <p class="step-desc">Clean raw text (strip markup, fix encodings, remove boilerplate). Sentence-segment each article, then split into overlapping fixed-size passages (e.g. 3 sentences with 1-sentence stride). Tokenize, lowercase, and remove stopwords for sparse representations. Tag each passage with its source city as metadata.</p>
+          <div class="tools">
+            <span class="tool">spaCy</span>
+            <span class="tool">NLTK</span>
+            <span class="tool">ftfy</span>
+            <span class="tool">langdetect</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c2">03</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Linguistic Analysis (NER + POS)</span>
+            <span class="step-phase phase-process">Processing</span>
+          </div>
+          <p class="step-desc">Run Named Entity Recognition to tag city-specific entities: locations (LOC), organizations (ORG), people (PER), dates (DATE), and geopolitical entities (GPE). Run POS tagging and dependency parsing. Store entity annotations per passage — used later for answer validation and query matching.</p>
+          <div class="tools">
+            <span class="tool">spaCy en_core_web_lg</span>
+            <span class="tool">Stanza</span>
+            <span class="tool">flair</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c3">04</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Indexing & Representation</span>
+            <span class="step-phase phase-model">Modeling</span>
+          </div>
+          <p class="step-desc">Build two parallel indexes over the passage corpus. (1) Sparse: TF-IDF weighted BM25 index for keyword-based retrieval. (2) Dense: encode all passages with a sentence transformer into a FAISS vector index for semantic retrieval. Both indexes are queryable independently for ablation.</p>
+          <div class="tools">
+            <span class="tool">rank-bm25</span>
+            <span class="tool">sentence-transformers</span>
+            <span class="tool">FAISS</span>
+            <span class="tool">all-MiniLM-L6-v2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c3">05</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Query Processing</span>
+            <span class="step-phase phase-model">Modeling</span>
+          </div>
+          <p class="step-desc">Analyze the incoming question. Classify question type (what / where / when / who / how many) using a rule-based or lightweight classifier. Extract city entity from query using NER — this identifies which city the question is about and narrows retrieval to that city's passages. Expand query with city synonyms if needed.</p>
+          <div class="tools">
+            <span class="tool">spaCy</span>
+            <span class="tool">regex rules</span>
+            <span class="tool">GeoNames</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c3">06</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Passage Retrieval</span>
+            <span class="step-phase phase-model">Modeling</span>
+          </div>
+          <p class="step-desc">Filter index to the identified city's passages, then retrieve top-k candidates using BM25 or dense search (or both). Combine with Reciprocal Rank Fusion for a hybrid retriever. Re-rank candidates using a cross-encoder if compute allows. Return top-3 passages for answer extraction.</p>
+          <div class="tools">
+            <span class="tool">rank-bm25</span>
+            <span class="tool">FAISS</span>
+            <span class="tool">cross-encoder/ms-marco</span>
+            <span class="tool">RRF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c3">07</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Answer Extraction</span>
+            <span class="step-phase phase-model">Modeling</span>
+          </div>
+          <p class="step-desc">Feed the top retrieved passage + question into a pre-trained extractive QA model (DistilBERT or RoBERTa fine-tuned on SQuAD 2.0). The model returns a start/end span. Validate the span type against the expected answer type (e.g., a "when" question expects a DATE entity). Return the answer with confidence score and source passage.</p>
+          <div class="tools">
+            <span class="tool">transformers</span>
+            <span class="tool">deepset/roberta-base-squad2</span>
+            <span class="tool">distilbert-base-squad2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-step">
+        <div class="step-circle c4">08</div>
+        <div>
+          <div class="step-head">
+            <span class="step-name">Evaluation</span>
+            <span class="step-phase phase-eval">Evaluation</span>
+          </div>
+          <p class="step-desc">Evaluate against a manually annotated gold set of 100+ city QA pairs. Measure Exact Match and token-level F1 for answer quality. Measure Recall@k for retrieval. Compare BM25-only vs. dense-only vs. hybrid. Perform error analysis: categorize failures by city, question type, and pipeline stage.</p>
+          <div class="tools">
+            <span class="tool">datasets</span>
+            <span class="tool">evaluate</span>
+            <span class="tool">pandas</span>
+            <span class="tool">matplotlib</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FLOW ═══════════════ -->
+<section id="flow">
+  <div class="container">
+    <div class="sec-label">System Flow</div>
+    <h2 class="sec-title">End-to-end data flow</h2>
+    <p class="sec-body">How a question moves through the system — from raw input to a grounded answer with source attribution.</p>
+
+    <div class="flow-wrap">
+      <div class="flow-svg-wrap">
+        <svg viewBox="0 0 860 500" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#4a5248"/>
+            </marker>
+            <marker id="arr-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#b8e068"/>
+            </marker>
+          </defs>
+
+          <!-- ── CORPUS BUILD label ── -->
+          <text x="390" y="22" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248" letter-spacing="1">CORPUS BUILD</text>
+          <line x1="20" y1="26" x2="760" y2="26" stroke="#2a2e2c" stroke-width="0.5"/>
+
+          <!-- DATA SOURCES column -->
+          <!-- Wikipedia -->
+          <rect x="20" y="36" width="120" height="44" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+          <text x="80" y="54" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">Wikipedia</text>
+          <text x="80" y="69" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">wikipedia-api</text>
+
+          <!-- NewsAPI -->
+          <rect x="20" y="96" width="120" height="44" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+          <text x="80" y="114" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">City News</text>
+          <text x="80" y="129" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">NewsAPI</text>
+
+          <!-- Tourism -->
+          <rect x="20" y="156" width="120" height="44" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+          <text x="80" y="174" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">Tourism</text>
+          <text x="80" y="189" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">portals</text>
+
+          <!-- RAW STORE box -->
+          <rect x="180" y="80" width="110" height="64" rx="8" fill="#131614" stroke="rgba(255,255,255,0.1)"/>
+          <text x="235" y="104" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">data/raw/</text>
+          <text x="235" y="120" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">city.json</text>
+          <text x="235" y="134" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">city_news.json</text>
+
+          <!-- arrows sources → raw -->
+          <line x1="140" y1="58"  x2="178" y2="96"  stroke="#2a2e2c" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="140" y1="118" x2="178" y2="118" stroke="#2a2e2c" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="140" y1="178" x2="178" y2="136" stroke="#2a2e2c" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- arrow raw → preprocess -->
+          <line x1="290" y1="112" x2="328" y2="112" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Preprocess box -->
+          <rect x="332" y="78" width="120" height="68" rx="8" fill="#1e2a1e" stroke="rgba(184,224,104,0.3)"/>
+          <text x="392" y="100" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#b8e068">Preprocess</text>
+          <text x="392" y="116" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">clean · segment</text>
+          <text x="392" y="130" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">tokenize · tag</text>
+
+          <!-- arrow preprocess → NER -->
+          <line x1="452" y1="112" x2="490" y2="112" stroke="rgba(184,224,104,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- NER box -->
+          <rect x="494" y="78" width="120" height="68" rx="8" fill="#1e2a2a" stroke="rgba(104,196,184,0.3)"/>
+          <text x="554" y="100" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#68c4b8">NER + POS</text>
+          <text x="554" y="116" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a8a84">entity tagging</text>
+          <text x="554" y="130" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a8a84">city metadata</text>
+
+          <!-- arrow NER → Index -->
+          <line x1="614" y1="112" x2="652" y2="112" stroke="rgba(104,196,184,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- Index box -->
+          <rect x="656" y="60" width="120" height="104" rx="8" fill="#221e10" stroke="rgba(232,168,74,0.3)"/>
+          <text x="716" y="85" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e8a84a">Dual Index</text>
+          <rect x="670" y="94" width="92" height="24" rx="4" fill="rgba(232,168,74,0.1)" stroke="rgba(232,168,74,0.2)"/>
+          <text x="716" y="110" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">BM25 sparse</text>
+          <rect x="670" y="124" width="92" height="24" rx="4" fill="rgba(232,168,74,0.1)" stroke="rgba(232,168,74,0.2)"/>
+          <text x="716" y="140" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">FAISS dense</text>
+
+          <!-- ── QUERY PATH label ── -->
+          <text x="390" y="236" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248" letter-spacing="1">QUERY PATH</text>
+          <line x1="20" y1="240" x2="860" y2="240" stroke="#2a2e2c" stroke-width="0.5"/>
+
+          <!-- Question input -->
+          <rect x="20" y="256" width="120" height="50" rx="8" fill="#1a1d1b" stroke="rgba(184,224,104,0.5)"/>
+          <text x="80" y="277" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#b8e068">Question</text>
+          <text x="80" y="293" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">natural language</text>
+
+          <!-- arrow → query proc -->
+          <line x1="140" y1="281" x2="178" y2="281" stroke="rgba(184,224,104,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- Query processing -->
+          <rect x="182" y="256" width="130" height="50" rx="8" fill="#1e2a1e" stroke="rgba(184,224,104,0.3)"/>
+          <text x="247" y="277" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#b8e068">Query Proc.</text>
+          <text x="247" y="293" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">type · city NER</text>
+
+          <!-- arrow → retrieval -->
+          <line x1="312" y1="281" x2="350" y2="281" stroke="rgba(184,224,104,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- Retrieval -->
+          <rect x="354" y="256" width="120" height="50" rx="8" fill="#221e10" stroke="rgba(232,168,74,0.3)"/>
+          <text x="414" y="277" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e8a84a">Retrieval</text>
+          <text x="414" y="293" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">top-k passages</text>
+
+          <!-- arrow index → retrieval (vertical dashed) -->
+          <line x1="716" y1="164" x2="716" y2="226" stroke="rgba(232,168,74,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="716" y1="226" x2="476" y2="272" stroke="rgba(232,168,74,0.3)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- arrow → answer extraction -->
+          <line x1="474" y1="281" x2="512" y2="281" stroke="rgba(232,168,74,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- Answer extraction -->
+          <rect x="516" y="256" width="130" height="50" rx="8" fill="#221e10" stroke="rgba(232,168,74,0.3)"/>
+          <text x="581" y="274" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e8a84a">Answer</text>
+          <text x="581" y="289" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e8a84a">Extraction</text>
+          <text x="581" y="304" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">span · confidence</text>
+
+          <!-- arrow → output -->
+          <line x1="646" y1="281" x2="684" y2="281" stroke="rgba(232,168,74,0.4)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <!-- Output -->
+          <rect x="688" y="251" width="130" height="60" rx="8" fill="#1a1d1b" stroke="rgba(232,122,106,0.5)"/>
+          <text x="753" y="271" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e87a6a">Answer</text>
+          <text x="753" y="287" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8604a">+ source passage</text>
+          <text x="753" y="302" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8604a">+ confidence</text>
+
+          <!-- Evaluation box (bottom) -->
+          <rect x="516" y="360" width="302" height="44" rx="8" fill="#221010" stroke="rgba(232,122,106,0.3)"/>
+          <text x="667" y="378" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e87a6a">Evaluation</text>
+          <text x="667" y="394" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#a85040">EM · F1 · Recall@k · error analysis</text>
+          <line x1="753" y1="311" x2="753" y2="346" stroke="rgba(232,122,106,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="753" y1="346" x2="720" y2="360" stroke="rgba(232,122,106,0.3)" stroke-width="1.5" marker-end="url(#arr)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- News scraping zoom-in -->
+    <div style="margin-top: 3rem;">
+      <div class="sec-label">News scraping detail</div>
+      <p class="sec-body" style="margin-bottom: 1.5rem;">How the NewsAPI scraper works — your script sends a city name query and gets back pre-aggregated articles from 100+ sources without touching any individual news site.</p>
+      <div class="flow-wrap">
+        <div class="flow-svg-wrap">
+          <svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+            <defs>
+              <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a5248"/>
+              </marker>
+              <marker id="arr2-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#b8e068"/>
+              </marker>
+            </defs>
+
+            <!-- Your scraper -->
+            <rect x="20" y="50" width="150" height="60" rx="8" fill="#1e2a1e" stroke="rgba(184,224,104,0.35)"/>
+            <text x="95" y="74" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#b8e068">Your scraper</text>
+            <text x="95" y="90" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">news_scraper.py</text>
+            <text x="95" y="104" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#6a9060">API key + city name</text>
+
+            <!-- arrow → NewsAPI -->
+            <line x1="170" y1="80" x2="218" y2="80" stroke="rgba(184,224,104,0.4)" stroke-width="1.5" marker-end="url(#arr2-g)"/>
+            <text x="194" y="72" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#4a5248">query</text>
+
+            <!-- NewsAPI box -->
+            <rect x="222" y="50" width="150" height="60" rx="8" fill="#1e1e2a" stroke="rgba(104,104,196,0.35)"/>
+            <text x="297" y="74" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#9898e0">NewsAPI</text>
+            <text x="297" y="90" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#5a5a90">newsapi.org</text>
+            <text x="297" y="104" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#5a5a90">searches 100+ outlets</text>
+
+            <!-- arrows down to sources -->
+            <line x1="260" y1="110" x2="100"  y2="168" stroke="#2a2e2c" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="275" y1="110" x2="220"  y2="168" stroke="#2a2e2c" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="297" y1="110" x2="340"  y2="168" stroke="#2a2e2c" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="318" y1="110" x2="460"  y2="168" stroke="#2a2e2c" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="330" y1="110" x2="570"  y2="168" stroke="#2a2e2c" stroke-width="1" marker-end="url(#arr2)"/>
+
+            <!-- News source boxes -->
+            <rect x="40"  y="168" width="120" height="40" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+            <text x="100" y="192" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">BBC</text>
+
+            <rect x="175" y="168" width="120" height="40" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+            <text x="235" y="192" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">Al Jazeera</text>
+
+            <rect x="300" y="168" width="120" height="40" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+            <text x="360" y="192" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">Reuters</text>
+
+            <rect x="425" y="168" width="120" height="40" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+            <text x="485" y="192" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#8a9186">CNN</text>
+
+            <rect x="540" y="168" width="90" height="40" rx="6" fill="#1a1d1b" stroke="#2a2e2c"/>
+            <text x="585" y="192" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#4a5248">100+ more</text>
+
+            <!-- JSON response arrow back up and right -->
+            <line x1="372" y1="110" x2="530" y2="80" stroke="rgba(184,224,104,0.3)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2-g)"/>
+            <text x="464" y="72" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#4a5248">JSON response</text>
+
+            <!-- Output box -->
+            <rect x="544" y="50" width="180" height="60" rx="8" fill="#221e10" stroke="rgba(232,168,74,0.3)"/>
+            <text x="634" y="72" text-anchor="middle" font-family="'Syne',sans-serif" font-size="12" font-weight="600" fill="#e8a84a">cairo_news.json</text>
+            <text x="634" y="88" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">title · source · date</text>
+            <text x="634" y="102" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c8884a">url · content</text>
+
+            <!-- arrow output → saved -->
+            <line x1="724" y1="80" x2="762" y2="80" stroke="rgba(232,168,74,0.4)" stroke-width="1.5" marker-end="url(#arr2-g)"/>
+
+            <!-- Saved box -->
+            <rect x="766" y="56" width="80" height="48" rx="6" fill="#131614" stroke="rgba(255,255,255,0.08)"/>
+            <text x="806" y="77" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#8a9186">data/raw/</text>
+            <text x="806" y="92" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">saved ✓</text>
+
+            <!-- repeat label -->
+            <text x="430" y="260" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#4a5248">↻  repeated for all 20 cities → 20 × city_news.json files</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section id="features">
+  <div class="container">
+    <div class="sec-label">Features</div>
+    <h2 class="sec-title">What makes it complete</h2>
+    <p class="sec-body">Key design decisions that give this project depth and justify every pipeline stage.</p>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🌍</div>
+        <div class="feat-title">Multi-city corpus</div>
+        <div class="feat-body">20+ cities spanning multiple regions and languages. The broader corpus forces the system to disambiguate cities (Paris TX vs Paris FR) and handle varied writing styles — a richer NLP challenge than a single-city setup.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔍</div>
+        <div class="feat-title">Dual retrieval (sparse + dense)</div>
+        <div class="feat-body">BM25 for keyword precision, sentence-BERT embeddings + FAISS for semantic recall. Running both as an ablation gives you a comparison experiment that strengthens the evaluation section of your report.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🗺️</div>
+        <div class="feat-title">City identification in query</div>
+        <div class="feat-body">The query processor uses NER to detect which city a question refers to, then narrows retrieval to that city's passages. This is a novel sub-task that adds a full NLP reasoning step before retrieval even begins.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏷️</div>
+        <div class="feat-title">Question type classification</div>
+        <div class="feat-body">Classifying questions (what / who / when / where / how many) lets the system validate that the extracted answer span has the expected entity type — a lightweight post-processing step that reduces obvious errors.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Rigorous evaluation</div>
+        <div class="feat-body">A manually built gold QA set of 100+ pairs — not borrowed benchmarks. Evaluation covers both retrieval quality (Recall@k, MRR) and answer quality (EM, F1), with a breakdown by city and question type.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔬</div>
+        <div class="feat-title">Error analysis module</div>
+        <div class="feat-body">Failures are categorized by stage: retrieval miss vs. extraction error vs. city detection failure. This lets you write a substantive analysis section and propose targeted improvements — which professors love.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">♻️</div>
+        <div class="feat-title">Modular architecture</div>
+        <div class="feat-body">Each pipeline stage is a standalone module with a clean interface. You can swap out the retriever or the QA model independently — great for ablations and easy to present as a system diagram.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🚀</div>
+        <div class="feat-title">Streamlit demo (stretch)</div>
+        <div class="feat-body">A simple UI where a user types a city question and sees the retrieved passage + highlighted answer span. Takes ~1 day to build on top of the finished pipeline and makes the final presentation memorable.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem;">
+      <div class="sec-label">Target metrics</div>
+      <div class="metrics-grid">
+        <div class="metric-card"><div class="metric-name">Exact Match</div><div class="metric-val">&gt;45%</div><div class="metric-hint">answer quality</div></div>
+        <div class="metric-card"><div class="metric-name">Token F1</div><div class="metric-val">&gt;60%</div><div class="metric-hint">answer quality</div></div>
+        <div class="metric-card"><div class="metric-name">Recall@5</div><div class="metric-val">&gt;75%</div><div class="metric-hint">retrieval quality</div></div>
+        <div class="metric-card"><div class="metric-name">MRR</div><div class="metric-val">&gt;0.6</div><div class="metric-hint">ranking quality</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════ PLAN ═══════════════ -->
+<section id="plan">
+  <div class="container">
+    <div class="sec-label">Project Plan</div>
+    <h2 class="sec-title">Task checklist</h2>
+    <p class="sec-body">All tasks in order — check them off as you go.</p>
+
+    <div id="todo-progress" style="margin: 2rem 0 1rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:12px; color:var(--muted); font-family:var(--mono);">progress</span>
+        <span id="progress-label" style="font-size:12px; color:var(--accent); font-family:var(--mono);">0 / 24</span>
+      </div>
+      <div style="height:3px; background:var(--border); border-radius:2px; overflow:hidden;">
+        <div id="progress-bar" style="height:100%; width:0%; background:var(--accent); border-radius:2px; transition:width 0.4s ease;"></div>
+      </div>
+    </div>
+
+    <div id="todo-list" style="display:flex; flex-direction:column; gap:6px; margin-top:1.5rem;"></div>
+
+    <div style="margin-top: 3rem;">
+      <div class="sec-label">Stretch goals</div>
+      <ul class="stretch-list">
+        <li><span><strong>Arabic language support</strong> — scrape Arabic Wikipedia for Arab cities; add multilingual-e5 as the dense retriever; evaluate on Arabic QA pairs using TyDi QA as reference.</span></li>
+        <li><span><strong>Fine-tune on city domain</strong> — create a small city-specific SQuAD-style dataset (500+ spans) and fine-tune DistilBERT; compare against zero-shot performance.</span></li>
+        <li><span><strong>Generative answer mode</strong> — use a small seq2seq model (T5-small) to generate a fluent answer from the retrieved passage instead of span extraction; compare both modes.</span></li>
+        <li><span><strong>Real-time news integration</strong> — add a live NewsAPI feed so the system can answer questions about recent city events, not just static Wikipedia knowledge.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>UrbanQA — Multi-City Question Answering · NLP Course Project</p>
+  </div>
+</footer>
+
+<style>
+  .todo-group-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    font-weight: 500; padding: 0.6rem 0 0.3rem; margin-top: 0.5rem;
+    font-family: var(--mono);
+  }
+  .todo-group-label.g-data { color: var(--accent); }
+  .todo-group-label.g-nlp  { color: var(--accent2); }
+  .todo-group-label.g-model { color: var(--accent3); }
+  .todo-group-label.g-eval  { color: var(--red); }
+  .todo-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.85rem 1rem;
+    cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .todo-item:hover { border-color: var(--border2); }
+  .todo-item.done { background: var(--bg); opacity: 0.5; }
+  .todo-item.done .todo-text { text-decoration: line-through; color: var(--muted); }
+  .todo-check {
+    width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;
+    border: 1.5px solid var(--border2); margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .todo-item.done .todo-check { background: var(--accent); border-color: var(--accent); }
+  .todo-check svg { display: none; }
+  .todo-item.done .todo-check svg { display: block; }
+  .todo-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+  .todo-sub { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+</style>
+
+<script>
+  /* ── nav smooth scroll ── */
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── pipeline scroll animation ── */
+  const steps = document.querySelectorAll('.pipe-step');
+  const pipeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80 * Array.from(steps).indexOf(entry.target));
+      }
+    });
+  }, { threshold: 0.15 });
+  steps.forEach(s => pipeObs.observe(s));
+
+  /* ── todo list ── */
+  const TASKS = [
+    { group: 'Data collection', cls: 'g-data', items: [
+      { text: 'Select 20 target cities across regions', sub: 'Mix capitals, megacities, and historic urban centers' },
+      { text: 'Set up project repo and folder structure', sub: 'data/, src/, notebooks/, evaluation/' },
+      { text: 'Write Wikipedia API scraper', sub: 'Fetch full article text + section metadata per city' },
+      { text: 'Write NewsAPI scraper', sub: 'Fetch top 10 relevant articles per city, store as city_news.json' },
+      { text: 'Write tourism portal scraper', sub: 'Pick one consistent source per city (e.g. Lonely Planet or official tourism site)' },
+      { text: 'Store all raw text with city metadata tags', sub: 'JSON with city name, source type, URL, scraped_at' },
+    ]},
+    { group: 'Preprocessing', cls: 'g-nlp', items: [
+      { text: 'Clean raw text — strip markup, fix encodings', sub: 'Use ftfy + BeautifulSoup cleanup pass' },
+      { text: 'Sentence-segment all articles', sub: 'spaCy sentencizer; verify quality on 3 sample cities' },
+      { text: 'Split into overlapping passages', sub: '3-sentence windows with 1-sentence stride' },
+      { text: 'Tokenize and normalize tokens', sub: 'Lowercase, remove stopwords, store both versions' },
+      { text: 'Run corpus statistics', sub: 'Vocab size, avg passage length, city coverage balance' },
+    ]},
+    { group: 'Linguistic analysis', cls: 'g-nlp', items: [
+      { text: 'Run NER over full passage corpus', sub: 'Tag LOC, GPE, ORG, PER, DATE per passage' },
+      { text: 'Run POS tagging and dependency parsing', sub: 'Store as annotations alongside passage text' },
+      { text: 'Resolve city-name ambiguities in corpus', sub: 'e.g. ensure "Paris" passages are tagged to correct city' },
+      { text: 'Analyze entity distribution across cities', sub: 'Which entity types dominate? Any gaps?' },
+    ]},
+    { group: 'Indexing & retrieval', cls: 'g-model', items: [
+      { text: 'Build BM25 sparse index', sub: 'rank-bm25; index tokenized passages per city' },
+      { text: 'Build FAISS dense index', sub: 'Encode passages with all-MiniLM-L6-v2; store vectors' },
+      { text: 'Implement query city detection', sub: 'NER on query to identify target city; filter index' },
+      { text: 'Implement question type classifier', sub: 'Rule-based: what/who/when/where/how-many' },
+      { text: 'Test both retrievers independently', sub: 'Manual spot-check on 20 test questions' },
+      { text: 'Implement hybrid retrieval with RRF', sub: 'Reciprocal Rank Fusion over BM25 + dense results' },
+    ]},
+    { group: 'Answer extraction', cls: 'g-model', items: [
+      { text: 'Integrate extractive QA model from Hugging Face', sub: 'deepset/roberta-base-squad2 or distilbert-base-squad2' },
+      { text: 'Run span extraction on top retrieved passage', sub: 'Return answer text + confidence score + source' },
+      { text: 'Add answer type validation', sub: 'Match span entity type to expected question type' },
+    ]},
+    { group: 'Evaluation & report', cls: 'g-eval', items: [
+      { text: 'Manually annotate 100+ gold QA pairs', sub: 'Distribute across all cities and question types' },
+      { text: 'Compute EM, F1, Recall@k, MRR', sub: 'Run ablations: BM25-only vs dense-only vs hybrid' },
+      { text: 'Perform error analysis', sub: 'Categorize failures by stage; propose at least one fix' },
+      { text: 'Write final report and prepare slides', sub: 'Motivation, pipeline, experiments, results, analysis' },
+    ]},
+  ];
+
+  const STORAGE_KEY = 'urbanqa_todo_v1';
+  let checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+  function allIds() {
+    const ids = [];
+    TASKS.forEach((g, gi) => g.items.forEach((_, ti) => ids.push(`${gi}-${ti}`)));
+    return ids;
+  }
+
+  function updateProgress() {
+    const ids = allIds();
+    const done = ids.filter(id => checked[id]).length;
+    document.getElementById('progress-label').textContent = `${done} / ${ids.length}`;
+    document.getElementById('progress-bar').style.width = `${(done / ids.length) * 100}%`;
+  }
+
+  function render() {
+    const list = document.getElementById('todo-list');
+    list.innerHTML = '';
+    TASKS.forEach((group, gi) => {
+      const label = document.createElement('div');
+      label.className = `todo-group-label ${group.cls}`;
+      label.textContent = group.group;
+      list.appendChild(label);
+
+      group.items.forEach((task, ti) => {
+        const id = `${gi}-${ti}`;
+        const item = document.createElement('div');
+        item.className = 'todo-item' + (checked[id] ? ' done' : '');
+        item.innerHTML = `
+          <div class="todo-check">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+              <path d="M1 4L3.5 6.5L9 1" stroke="#0d0f0e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="todo-text">${task.text}</div>
+            ${task.sub ? `<div class="todo-sub">${task.sub}</div>` : ''}
+          </div>`;
+        item.addEventListener('click', () => {
+          checked[id] = !checked[id];
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+          item.classList.toggle('done', checked[id]);
+          updateProgress();
+        });
+        list.appendChild(item);
+      });
+    });
+    updateProgress();
+  }
+
+  render();
+</script>
+</body>
+</html>
