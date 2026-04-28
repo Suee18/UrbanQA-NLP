@@ -92,30 +92,58 @@ def load_config(config_path="configs/config.yaml"):
         return yaml.safe_load(f)
 
 
-def fetch_one(title, auto_suggest=False):
-    """Fetch one Wikipedia page. Returns (text, page_url, sections, title) or None."""
+def _to_record(page):
+    return {
+        "title":    page.title,
+        "url":      page.url,
+        "sections": page.sections,
+        "text":     page.content,
+    }
+
+
+def fetch_one(title):
+    """Robust fetch with three escalating strategies. Returns (record, error_str)
+    where one is always None.
+
+    1. Exact title, auto_suggest=False — strictest
+    2. auto_suggest=True — Wikipedia's spell/redirect suggestion
+    3. wikipedia.search(title)[0] — fall back to top search hit
+
+    Disambiguation errors are caught and we fall through to strategy 3."""
+
+    # Strategy 1: exact
     try:
-        page = wikipedia.page(title, auto_suggest=auto_suggest)
-        return {
-            "title":    page.title,
-            "url":      page.url,
-            "sections": page.sections,
-            "text":     page.content,
-        }
+        return _to_record(wikipedia.page(title, auto_suggest=False)), None
     except wikipedia.exceptions.DisambiguationError as e:
-        # Try first disambiguation option
+        # Strategy 1.5: try first disambiguation option
         try:
-            page = wikipedia.page(e.options[0], auto_suggest=False)
-            return {
-                "title":    page.title,
-                "url":      page.url,
-                "sections": page.sections,
-                "text":     page.content,
-            }
+            return _to_record(wikipedia.page(e.options[0], auto_suggest=False)), None
         except Exception:
-            return None
+            pass
+    except wikipedia.exceptions.PageError:
+        pass
+    except Exception as e:
+        # Connection / parsing errors etc. — fall through to next strategy
+        pass
+
+    # Strategy 2: auto_suggest=True (lets Wikipedia spell-correct / redirect)
+    try:
+        return _to_record(wikipedia.page(title, auto_suggest=True)), None
     except Exception:
-        return None
+        pass
+
+    # Strategy 3: search and take the top hit
+    try:
+        results = wikipedia.search(title, results=3)
+        for candidate in results:
+            try:
+                return _to_record(wikipedia.page(candidate, auto_suggest=False)), None
+            except Exception:
+                continue
+    except Exception as e:
+        return None, f"search-failed: {type(e).__name__}: {e}"
+
+    return None, "all-strategies-failed"
 
 
 def main():
@@ -132,10 +160,10 @@ def main():
     failed = []
 
     for i, title in enumerate(titles, start=1):
-        print(f"  [{i}/{len(titles)}] {title}")
-        result = fetch_one(title)
+        print(f"  [{i}/{len(titles)}] {title}", end="")
+        result, err = fetch_one(title)
         if result is None:
-            print(f"      failed")
+            print(f"  ✗  {err}")
             failed.append(title)
             continue
 
@@ -144,9 +172,14 @@ def main():
         parts.append(f"\n\n== {result['title']} ==\n\n{result['text']}")
         sections.extend(result["sections"])
         fetched_titles.append(result["title"])
+        print(f"  ✓  → {result['title']}")
 
-        # Light politeness delay — Wikipedia is fine but no need to hammer.
-        time.sleep(0.2)
+        # Politeness delay. Wikipedia silently rate-limits after ~15 rapid
+        # requests; 1 sec keeps us comfortably under that. Add an extra
+        # 5-sec breath every 10 articles as belt-and-suspenders.
+        time.sleep(1.0)
+        if i % 10 == 0:
+            time.sleep(5.0)
 
     # Write one combined JSON in the same shape as the standard scraper.
     combined = {

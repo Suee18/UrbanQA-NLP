@@ -24,6 +24,9 @@ import os
 import subprocess
 import sys
 
+# Make `src.*` importable when this script is launched from any cwd.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 CITY = "Munich"
 
 
