@@ -46,24 +46,51 @@ class UrbanQA:
         self.extractor = AnswerExtractor() if load_extractor else None
 
     def answer(self, question, mode=None, top_k=5, retrieve_k=20,
-               rerank=True, read_k=3):
-        """End-to-end QA over one question. Returns JSON-serializable dict."""
+               rerank=True, read_k=3, list_top_k=8):
+        """End-to-end QA over one question. Returns JSON-serializable dict.
+
+        Two flows: extractive (default) returns one span; list mode returns
+        the retrieved passages + an aggregated entity list. List mode triggers
+        when query["is_list_query"] is True (detected by the query processor
+        from phrasing like "top 10 places", "what are popular sights", etc.).
+        Extractive QA can't synthesize a list across passages — list mode is
+        an honest "here's what I found" instead of a forced wrong span.
+        """
         mode = mode or self.mode
 
         # 1. Query processing
         query = process_query(question, self.cities, self.nlp, self.alias_lookup)
 
-        # 2. Retrieval
+        # 2. Retrieval — list mode wants more passages so the entity aggregation
+        #    has more material to work with.
+        effective_top_k = list_top_k if query["is_list_query"] else top_k
         passages = self.retriever.retrieve(
             question,
             city=query["detected_city"],
             mode=mode,
-            top_k=top_k,
+            top_k=effective_top_k,
             retrieve_k=retrieve_k,
             rerank=rerank,
         )
 
-        # 3. Answer extraction
+        # 3a. List mode — skip extraction, aggregate entities, return passages.
+        if query["is_list_query"]:
+            entities = self._aggregate_entities(passages, top_n=15)
+            return {
+                "question":           question,
+                "mode":               mode,
+                "list_mode":          True,
+                "query":              query,
+                "answer":             "",          # no single span; consumers should render passages + entities
+                "confidence":         0.0,
+                "type_match":         True,
+                "source_passage":     passages[0] if passages else {},
+                "retrieved_passages": passages,
+                "aggregated_entities": entities,    # list of {text, label, count}
+                "all_candidates":     [],
+            }
+
+        # 3b. Standard extractive flow
         result = self.extractor.extract(
             question,
             passages,
@@ -71,18 +98,54 @@ class UrbanQA:
             read_k=read_k,
         )
 
-        # 4. Assemble unified payload — what every UI surface consumes
         return {
-            "question":         question,
-            "mode":             mode,
-            "query":            query,
-            "answer":           result["answer"],
-            "confidence":       result["confidence"],
-            "type_match":       result["type_match"],
-            "source_passage":   result["source_passage"],
+            "question":           question,
+            "mode":               mode,
+            "list_mode":          False,
+            "query":              query,
+            "answer":             result["answer"],
+            "confidence":         result["confidence"],
+            "type_match":         result["type_match"],
+            "source_passage":     result["source_passage"],
             "retrieved_passages": passages,
-            "all_candidates":   result["all_candidates"],
+            "aggregated_entities": [],
+            "all_candidates":     result["all_candidates"],
         }
+
+    def _aggregate_entities(self, passages, top_n=15):
+        """Run NER over the retrieved passages, collect typed-entity mentions,
+        dedupe case-insensitively, count, and return the top-N most frequent.
+
+        Restricted to entity types useful in a 'list things in X' answer:
+        FAC (buildings, museums), LOC (geographic features), GPE (cities),
+        ORG (institutions, teams, companies), EVENT, WORK_OF_ART, PRODUCT.
+
+        We re-NER at query time rather than reading entities from the
+        on-disk passages because the retriever's metadata is intentionally
+        lightweight (no entities/POS) — a freshly tagged 5-passage list takes
+        ~150 ms with the already-loaded spaCy model, which is fine here.
+        """
+        from collections import Counter
+        WANTED = {"FAC", "LOC", "GPE", "ORG", "EVENT", "WORK_OF_ART", "PRODUCT"}
+
+        counts = Counter()
+        first_label = {}
+        for p in passages:
+            doc = self.nlp(p["text"])
+            for ent in doc.ents:
+                if ent.label_ not in WANTED:
+                    continue
+                key = ent.text.strip().lower()
+                if len(key) < 2:
+                    continue
+                counts[key] += 1
+                if key not in first_label:
+                    first_label[key] = (ent.text.strip(), ent.label_)
+
+        return [
+            {"text": first_label[k][0], "label": first_label[k][1], "count": c}
+            for k, c in counts.most_common(top_n)
+        ]
 
 
 def _format_human(payload):
@@ -92,13 +155,37 @@ def _format_human(payload):
         f"Q: {payload['question']}",
         f"   city: {q['detected_city']}  (conf {q['city_confidence']:.2f})  "
         f"type: {q['question_type']}  mode: {payload['mode']}",
+    ]
+
+    # List-mode rendering: skip the single-span "answer" (always empty),
+    # show the aggregated entities and a brief summary of the retrieved
+    # passages. Honest "here's what I found" instead of forcing a wrong span.
+    if payload.get("list_mode"):
+        lines.append("")
+        lines.append("List question detected — extractive QA can't synthesize lists.")
+        lines.append("Showing what was found across the most relevant passages:")
+        if payload.get("aggregated_entities"):
+            lines.append("")
+            lines.append("Mentioned across passages (top entities by frequency):")
+            for e in payload["aggregated_entities"]:
+                lines.append(f"  · {e['text']:30s} [{e['label']}]  ×{e['count']}")
+        lines.append("")
+        lines.append(f"Top {len(payload['retrieved_passages'])} passages:")
+        for p in payload["retrieved_passages"]:
+            snippet = p["text"][:160].replace("\n", " ").strip()
+            lines.append(f"  [{p['rank']}] {p['passage_id']}  ({p['source']})")
+            lines.append(f"      {snippet}…")
+        return "\n".join(lines)
+
+    # Standard extractive flow
+    lines.extend([
         "",
         f"A: {payload['answer']!r}",
         f"   confidence: {payload['confidence']:.3f}  type_match: {payload['type_match']}",
         "",
         f"Source [{payload['source_passage']['passage_id']}]:",
         f"   {payload['source_passage']['text']}",
-    ]
+    ])
     return "\n".join(lines)
 
 

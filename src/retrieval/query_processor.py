@@ -131,6 +131,31 @@ def detect_city(question, cities, nlp, alias_lookup=None):
     return None, 0.0
 
 
+# ── List-style question detection ──────────────────────────────────────
+# Extractive QA returns a single span from a single passage — useless for
+# "list 10 places", "what are popular sights", etc. We detect those upfront
+# and route them through a different code path (skip extraction, return
+# retrieved passages directly with extracted place entities).
+LIST_PATTERNS = [
+    re.compile(r"\btop\s+\d+\b", re.I),                              # "top 10"
+    re.compile(r"\b(list|name|enumerate|give\s+me)\s+", re.I),       # "list the", "name some", "give me"
+    re.compile(r"\bwhat\s+are\s+(the\s+)?"
+               r"(top|main|popular|best|famous|some|"
+               r"places|sights|attractions|landmarks|things|"
+               r"museums?|restaurants?|districts?|neighborhoods?)\b", re.I),
+    re.compile(r"\bwhere\s+(can|should)\s+i\s+(go|visit|eat|stay)\b", re.I),
+    re.compile(r"\bwhat\s+(can|should)\s+i\s+(visit|see|do)\b", re.I),
+    re.compile(r"\btell\s+me\s+(about\s+)?(some|the)\b", re.I),
+    re.compile(r"\b(things|places|sights|attractions|landmarks|museums)\s+to\s+(visit|see|do|eat)\b", re.I),
+    re.compile(r"\b(some|several|few|many)\s+(places|sights|attractions|things|examples)\b", re.I),
+]
+
+
+def is_list_query(question):
+    """True if the question asks for multiple items (a list, top N, etc.)."""
+    return any(p.search(question) for p in LIST_PATTERNS)
+
+
 def process_query(question, cities, nlp, alias_lookup=None):
     """Top-level entry point — returns the JSON-serializable query record."""
     q_type = classify_question_type(question)
@@ -142,6 +167,7 @@ def process_query(question, cities, nlp, alias_lookup=None):
         "expected_entity_types": EXPECTED_ENTITY_TYPES[q_type],
         "detected_city":         city,
         "city_confidence":       conf,
+        "is_list_query":         is_list_query(question),
     }
 
 
