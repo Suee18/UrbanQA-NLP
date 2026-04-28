@@ -89,6 +89,19 @@ def segment_tourism(data, nlp, city):
     return all_passages
 
 
+def segment_digital_twin(data, nlp, city):
+    """Custom domain doc (e.g. user's Munich Smart City Digital Twin paper)."""
+    sentences = sentencize(data["text"], nlp)
+    passages = make_passages(sentences)
+    return [{
+        "city": city,
+        "source": "digital_twin",
+        "passage_id": f"{city}_digital_twin_{p['passage_id']}",
+        "text": p["text"],
+        "sentences": p["sentences"]
+    } for p in passages]
+
+
 def process_city(city_name, processed_dir, out_dir, nlp):
     slug = city_name.lower().replace(" ", "_")
     os.makedirs(out_dir, exist_ok=True)
@@ -111,6 +124,12 @@ def process_city(city_name, processed_dir, out_dir, nlp):
     if os.path.exists(tourism_path):
         with open(tourism_path, "r", encoding="utf-8") as f:
             all_passages += segment_tourism(json.load(f), nlp, city_name)
+
+    # Digital twin (custom domain doc — only present for cities that have one)
+    dt_path = os.path.join(processed_dir, f"{slug}_digital_twin_clean.json")
+    if os.path.exists(dt_path):
+        with open(dt_path, "r", encoding="utf-8") as f:
+            all_passages += segment_digital_twin(json.load(f), nlp, city_name)
 
     # save all passages for this city in one file
     out_path = os.path.join(out_dir, f"{slug}_passages.json")

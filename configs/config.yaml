@@ -19,6 +19,7 @@ cities:
   - Toronto
   - Nairobi
   - Jakarta
+  - Munich
 
 paths:
   raw_data: data/raw

@@ -68,6 +68,7 @@ CITY_ALIASES = {
     "Toronto":       ["toronto"],
     "Nairobi":       ["nairobi"],
     "Jakarta":       ["jakarta", "batavia"],
+    "Munich":        ["munich", "münchen", "muenchen"],
 }
 
 
