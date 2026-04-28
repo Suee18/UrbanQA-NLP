@@ -149,38 +149,83 @@ if (ask_clicked or question) and question.strip():
             read_k=read_k,
         )
 
-    # Answer box
     city = payload["query"]["detected_city"] or "—"
     qtype = payload["query"]["question_type"]
-    answer = payload["answer"] or "(no answer found)"
-    conf = payload["confidence"]
 
-    st.markdown(f"""
-    <div class="answer-box">
-      <div>
-        <span class="meta-pill pill-city">city · {city}</span>
-        <span class="meta-pill pill-type">type · {qtype}</span>
-        <span class="meta-pill pill-mode">{mode}</span>
-      </div>
-      <div class="answer-text" style="margin-top: 0.8rem;">{answer}</div>
-      <div style="color: #8a9186; margin-top: 0.5rem; font-size: 13px;">
-        confidence {conf:.2f}
-        {' · type matched ✓' if payload['type_match'] else ' · type mismatch'}
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # ── List mode: show entities + retrieved passages, no single span ────
+    if payload.get("list_mode"):
+        st.markdown(f"""
+        <div class="answer-box">
+          <div>
+            <span class="meta-pill pill-city">city · {city}</span>
+            <span class="meta-pill pill-type">list query</span>
+            <span class="meta-pill pill-mode">{mode}</span>
+          </div>
+          <div style="color: #c8ccc4; margin-top: 0.8rem; font-size: 14px; line-height: 1.7;">
+            <strong style="color: #b8e068;">List question detected.</strong>
+            Extractive QA returns one span per question — it can't synthesize a list across passages.
+            Showing what was found in the most relevant passages instead.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Source passage
-    src = payload["source_passage"]
-    st.markdown("##### 📄 Source passage")
-    st.markdown(f"""
-    <div class="source-box">
-      {highlight_answer(src['text'], answer)}
-    </div>
-    <div style="color: #8a9186; font-size: 12px; margin-top: 0.4rem;">
-      <code>{src['passage_id']}</code> · {src['city']} · source: {src['source']}
-    </div>
-    """, unsafe_allow_html=True)
+        ents = payload.get("aggregated_entities", [])
+        if ents:
+            st.markdown("##### 🏷  Mentioned across passages")
+            cols = st.columns(3)
+            for i, e in enumerate(ents):
+                with cols[i % 3]:
+                    st.markdown(
+                        f"<div style='background:#1a1d1b;border:1px solid #333;border-radius:6px;"
+                        f"padding:8px 12px;margin-bottom:6px;'>"
+                        f"<div style='color:#b8e068;font-weight:600;font-size:14px;'>{e['text']}</div>"
+                        f"<div style='color:#8a9186;font-size:11px;font-family:monospace;'>"
+                        f"{e['label']} · mentioned ×{e['count']}</div></div>",
+                        unsafe_allow_html=True,
+                    )
+
+        st.markdown(f"##### 📄 Top {len(payload['retrieved_passages'])} relevant passages")
+        for p in payload["retrieved_passages"]:
+            st.markdown(f"""
+            <div style="margin: 0.5rem 0;">
+              <div style="color: #8a9186; font-size: 12px; margin-bottom: 4px;">
+                <strong style="color: #b8e068;">#{p['rank']}</strong> ·
+                <code>{p['passage_id']}</code> · {p['city']} · source: {p['source']}
+              </div>
+              <div class="source-box">{p['text']}</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    else:
+        # ── Standard extractive flow: big answer card + source ───────────
+        answer = payload["answer"] or "(no answer found)"
+        conf = payload["confidence"]
+
+        st.markdown(f"""
+        <div class="answer-box">
+          <div>
+            <span class="meta-pill pill-city">city · {city}</span>
+            <span class="meta-pill pill-type">type · {qtype}</span>
+            <span class="meta-pill pill-mode">{mode}</span>
+          </div>
+          <div class="answer-text" style="margin-top: 0.8rem;">{answer}</div>
+          <div style="color: #8a9186; margin-top: 0.5rem; font-size: 13px;">
+            confidence {conf:.2f}
+            {' · type matched ✓' if payload['type_match'] else ' · type mismatch'}
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        src = payload["source_passage"]
+        st.markdown("##### 📄 Source passage")
+        st.markdown(f"""
+        <div class="source-box">
+          {highlight_answer(src['text'], answer)}
+        </div>
+        <div style="color: #8a9186; font-size: 12px; margin-top: 0.4rem;">
+          <code>{src['passage_id']}</code> · {src['city']} · source: {src['source']}
+        </div>
+        """, unsafe_allow_html=True)
 
     # All retrieved passages
     with st.expander(f"🔍 All {len(payload['retrieved_passages'])} retrieved passages"):
