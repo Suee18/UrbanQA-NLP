@@ -46,6 +46,18 @@ PIPELINE = [
         "once": False,
         "desc": "Tags named entities and POS for every passage"
     },
+    {
+        "name": "BM25 index",
+        "script": "src/indexing/bm25_index.py",
+        "once": False,
+        "desc": "Builds a BM25 sparse index over normalized tokens for keyword retrieval"
+    },
+    {
+        "name": "Dense index",
+        "script": "src/indexing/dense_index.py",
+        "once": False,
+        "desc": "Encodes all passages with all-mpnet-base-v2 and builds a FAISS dense index"
+    },
 ]
 
 

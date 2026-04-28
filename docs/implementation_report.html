@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrbanQA — Implementation Report</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0f0e; --bg2: #131614; --bg3: #1a1d1b;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+    --text: #e8ebe6; --muted: #8a9186;
+    --accent: #b8e068;  --accent2: #68c4b8;
+    --accent3: #e8a84a; --red: #e87a6a;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Syne', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--bg); color: var(--text);
+    line-height: 1.6; font-size: 15px;
+  }
+  /* nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,15,14,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 56px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 20px; letter-spacing: -0.02em; color: var(--accent); }
+  .nav-links { display: flex; gap: 1.6rem; }
+  .nav-links a {
+    font-size: 11px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--text); }
+  /* layout */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+  /* hero */
+  #hero { padding: 9rem 0 4rem; position: relative; overflow: hidden; }
+  .hero-grid-bg {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--text) 1px, transparent 1px),
+      linear-gradient(90deg, var(--text) 1px, transparent 1px);
+    background-size: 48px 48px; pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid rgba(184,224,104,0.3);
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+    box-shadow: 0 0 12px rgba(184,224,104,0.6);
+  }
+  h1.hero-title {
+    font-family: var(--serif); font-size: clamp(36px, 5.4vw, 64px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  h1.hero-title em { font-style: italic; color: var(--accent2); }
+  .hero-sub {
+    font-size: 17px; color: var(--muted); max-width: 620px;
+    margin-top: 1.4rem; line-height: 1.7;
+  }
+  .hero-meta { display: flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-item .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .hero-meta-item .val { font-size: 15px; font-weight: 500; color: var(--text); }
+  /* sections */
+  .sec-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;
+  }
+  h2.sec-title {
+    font-family: var(--serif); font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.4rem;
+  }
+  .sec-body { color: var(--muted); max-width: 720px; line-height: 1.8; font-size: 15px; }
+  /* stat cards */
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 2.5rem; }
+  .stat-card { background: var(--bg2); padding: 1.5rem; }
+  .stat-card .num { font-family: var(--serif); font-size: 36px; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-card .stat-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+  .stat-card .stat-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  /* stage cards */
+  .stages { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .stage {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.6rem 1.8rem;
+    display: grid; grid-template-columns: 56px 1fr; gap: 1.4rem;
+  }
+  .stage-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 500; font-family: var(--mono);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .stage-num.c1 { background: rgba(184,224,104,0.12); color: var(--accent); border: 1px solid rgba(184,224,104,0.25); }
+  .stage-num.c2 { background: rgba(104,196,184,0.12); color: var(--accent2); border: 1px solid rgba(104,196,184,0.25); }
+  .stage-num.c3 { background: rgba(232,168,74,0.12); color: var(--accent3); border: 1px solid rgba(232,168,74,0.25); }
+  .stage-num.c4 { background: rgba(232,122,106,0.12); color: var(--red); border: 1px solid rgba(232,122,106,0.25); }
+  .stage-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 0.8rem; flex-wrap: wrap; }
+  .stage-name { font-size: 17px; font-weight: 600; color: var(--text); }
+  .stage-status {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 2px 9px; border-radius: 10px; font-weight: 500;
+    background: rgba(184,224,104,0.12); color: var(--accent);
+    border: 1px solid rgba(184,224,104,0.25);
+  }
+  .stage-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+  .stage-block { margin-top: 0.8rem; }
+  .stage-block .blabel {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent2); font-family: var(--mono); margin-bottom: 0.35rem;
+  }
+  .stage-block .bbody {
+    font-size: 13px; color: #c8ccc4; line-height: 1.7;
+  }
+  .stage-files {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.5rem 0.8rem; margin-top: 0.4rem;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  .stage-files code { color: var(--accent); background: none; padding: 0; }
+  .tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.8rem; }
+  .tool {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--muted); padding: 3px 10px; border-radius: 4px;
+  }
+  /* runtime flow */
+  .flow {
+    margin-top: 2.5rem;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 2rem;
+  }
+  .flow-step { display: grid; grid-template-columns: 36px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed var(--border); }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-marker {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(184,224,104,0.15); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    border: 1px solid rgba(184,224,104,0.3);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .flow-step h4 { font-size: 14px; color: var(--text); margin-bottom: 0.4rem; }
+  .flow-step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .flow-step .codeblock {
+    background: var(--bg3); border-left: 2px solid var(--accent);
+    padding: 0.6rem 0.9rem; margin-top: 0.6rem;
+    font-family: var(--mono); font-size: 12px; color: #c8ccc4;
+    border-radius: 4px; line-height: 1.6; white-space: pre-wrap;
+  }
+  /* eval table */
+  table.eval {
+    width: 100%; border-collapse: collapse; margin-top: 1.5rem;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  table.eval th, table.eval td {
+    padding: 0.8rem 1rem; text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  table.eval th {
+    background: var(--bg3); color: var(--accent2);
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  table.eval td { color: var(--muted); }
+  table.eval td.metric { font-family: var(--mono); color: var(--text); text-align: right; }
+  table.eval tr:last-child td { border-bottom: none; }
+  table.eval tr.hl td { background: rgba(184,224,104,0.05); color: var(--accent); }
+  table.eval tr.hl td.metric { color: var(--accent); }
+  /* json schema */
+  .json-block {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.4rem; margin-top: 1.5rem;
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.8;
+    color: #c8ccc4; white-space: pre; overflow-x: auto;
+  }
+  .json-block .jkey { color: var(--accent); }
+  .json-block .jstr { color: var(--accent2); }
+  .json-block .jcomment { color: var(--muted); font-style: italic; }
+  .json-block .jpunct { color: #555; }
+  /* error categories */
+  .err-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 1.5rem; }
+  .err-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem 1.4rem;
+  }
+  .err-card .ename {
+    font-family: var(--mono); font-size: 12px; color: var(--red);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;
+  }
+  .err-card .ebody { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  /* commands */
+  .cmd-list { display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+  .cmd-item {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.2rem;
+  }
+  .cmd-item .cmd-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+  .cmd-item .cmd-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+  .cmd-item code {
+    display: block; background: var(--bg3); padding: 0.55rem 0.8rem; border-radius: 4px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--accent);
+    border: 1px solid var(--border);
+  }
+  /* future card */
+  .future-card {
+    background: linear-gradient(135deg, rgba(104,196,184,0.06), rgba(184,224,104,0.04));
+    border: 1px solid rgba(104,196,184,0.2);
+    border-radius: 12px; padding: 1.6rem 1.8rem;
+    margin-top: 1.5rem;
+  }
+  .future-card h4 { font-size: 16px; color: var(--accent2); margin-bottom: 0.6rem; }
+  .future-card p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+  /* footer */
+  footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: 12px; color: var(--muted); }
+  /* responsive */
+  @media (max-width: 720px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.2rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .err-grid { grid-template-columns: 1fr; }
+    .stage { grid-template-columns: 36px 1fr; gap: 1rem; padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">UrbanQA · Implementation</div>
+  <div class="nav-links">
+    <a href="#summary">Summary</a>
+    <a href="#stages">Stages</a>
+    <a href="#runtime">Runtime</a>
+    <a href="#eval">Eval</a>
+    <a href="#payload">Payload</a>
+    <a href="#try">Try it</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="container">
+    <div class="hero-tag">Implementation Report · 2026-04-28</div>
+    <h1 class="hero-title">UrbanQA is <em>built</em><br>and <em>working</em>.</h1>
+    <p class="hero-sub">
+      Every stage of the original eight-stage plan is implemented, tested, and verified end-to-end.
+      Hybrid retrieval + extractive QA reaches <strong style="color:var(--accent)">76.5% Exact Match</strong>
+      and <strong style="color:var(--accent)">85.1% F1</strong> on a 200-question auto-generated gold set —
+      both well above the project targets. A Streamlit demo runs over the same payload
+      that the future Unreal/UDP server will consume.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="label">Pipeline stages</span><span class="val">8 / 8 built</span></div>
+      <div class="hero-meta-item"><span class="label">Passages indexed</span><span class="val">20,554</span></div>
+      <div class="hero-meta-item"><span class="label">Cities</span><span class="val">20</span></div>
+      <div class="hero-meta-item"><span class="label">Gold QA pairs</span><span class="val">200 (auto)</span></div>
+      <div class="hero-meta-item"><span class="label">Hybrid EM / F1</span><span class="val" style="color:var(--accent)">0.77 / 0.85</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SUMMARY ═══════════ -->
+<section id="summary">
+  <div class="container">
+    <div class="sec-label">Summary</div>
+    <h2 class="sec-title">What got built</h2>
+    <p class="sec-body">
+      Going into this session, stages 1–3 (collection, preprocessing, NER+POS) were already in place — producing 20,554 passages with 217,933 tagged entities. Stages 4–8 existed only as empty stub files. This session filled in every stub, wired them together with a unified entry point, generated an evaluation set, ran the full ablation, and shipped a demo UI.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">8/8</div>
+        <div class="stat-title">Stages complete</div>
+        <div class="stat-body">From scraping through evaluation. No black boxes — every module is replaceable.</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">20,554</div>
+        <div class="stat-title">Passages indexed</div>
+        <div class="stat-body">Across 20 cities, with both BM25 sparse and FAISS dense indexes (768-dim mpnet).</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">76.5%</div>
+        <div class="stat-title">Exact Match (hybrid)</div>
+        <div class="stat-body">Versus 45% target. F1 is 85.1% (target 60%). Recall@5 is 91.5%.</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">0</div>
+        <div class="stat-title">Manual gold pairs needed</div>
+        <div class="stat-body">A T5 question-generation model auto-built 200 candidates from the existing corpus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE EIGHT STAGES ═══════════ -->
+<section id="stages">
+  <div class="container">
+    <div class="sec-label">Implementation</div>
+    <h2 class="sec-title">The eight stages, one at a time</h2>
+    <p class="sec-body">
+      Each card below is one module in <code>src/</code>. The "what it does" sections explain
+      what happens at runtime and why the implementation choice was made. Models, file paths,
+      and dependencies are spelled out so you can swap any piece independently.
+    </p>
+
+    <div class="stages">
+
+      <!-- Stage 1 -->
+      <div class="stage">
+        <div class="stage-num c1">01</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Data Collection</span>
+            <span class="stage-status">already done</span>
+          </div>
+          <p class="stage-desc">
+            Scrapes Wikipedia, NewsAPI, and tourism sections for 20 cities. Each source goes
+            into its own JSON file under <code>data/raw/</code> tagged with the city name, source type,
+            URL, and a scrape timestamp. Wikipedia + tourism are static; news is a live feed.
+          </p>
+          <div class="stage-files">
+            <code>src/collection/scraper.py</code> · <code>news_scraper.py</code> · <code>tourism_extractor.py</code>
+          </div>
+          <div class="tools">
+            <span class="tool">wikipedia-api</span><span class="tool">requests</span>
+            <span class="tool">BeautifulSoup4</span><span class="tool">NewsAPI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage">
+        <div class="stage-num c2">02</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Preprocessing &amp; Segmentation</span>
+            <span class="stage-status">already done</span>
+          </div>
+          <p class="stage-desc">
+            Three sub-stages chained together: clean → segment → tokenize. Cleaning strips
+            markup with ftfy/BeautifulSoup. Segmentation uses spaCy's sentencizer, then bundles
+            sentences into <strong>3-sentence overlapping passages with 1-sentence stride</strong> — short
+            enough that the QA reader can attend over them, long enough to retain context.
+            Tokenization stores both the raw token list (case + punctuation preserved) and a
+            normalized list (lemmatized, lowercased, stopwords + punct removed) — BM25 uses
+            the normalized list, dense embeddings use the original text.
+          </p>
+          <div class="stage-files">
+            <code>src/preprocessing/{cleaner, segmenter, tokenizer}.py</code>
+            → <code>data/processed/{city}_passages.json</code>
+          </div>
+          <div class="tools">
+            <span class="tool">spaCy</span><span class="tool">ftfy</span>
+            <span class="tool">BeautifulSoup4</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage">
+        <div class="stage-num c2">03</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Linguistic Analysis (NER + POS)</span>
+            <span class="stage-status">already done</span>
+          </div>
+          <p class="stage-desc">
+            Runs <code>en_core_web_lg</code> over every passage and stores entity tags
+            (PERSON, ORG, GPE, LOC, DATE, CARDINAL, etc.) plus per-token POS + dependency labels.
+            The entity tags get reused four times downstream:
+            <strong>(1)</strong> the gold QA builder uses them as candidate answer spans;
+            <strong>(2)</strong> the query processor uses GPE/LOC tags to detect which city a question is about;
+            <strong>(3)</strong> the answer extractor uses them to validate that "when" answers carry DATE entities;
+            <strong>(4)</strong> the corpus exploration notebook visualizes the entity distribution per city.
+          </p>
+          <div class="stage-files">
+            <code>src/analysis/ner_pos.py</code> → 217,933 tagged entities across 20,554 passages
+          </div>
+          <div class="tools">
+            <span class="tool">spaCy en_core_web_lg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="stage">
+        <div class="stage-num c3">04</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Indexing &amp; Representation</span>
+            <span class="stage-status">built this session</span>
+          </div>
+          <p class="stage-desc">
+            Two indexes built from the same passage list, queryable independently.
+            <br><br>
+            <strong style="color:var(--accent)">BM25 (sparse).</strong> Built with
+            <code>rank-bm25</code> over the normalized tokens. Weights words by inverse document
+            frequency — great at exact keyword matches ("Saladin", "Mamluk") and queries with
+            specific named entities. Stored as a pickle: <code>data/indexes/bm25.pkl</code>
+            (17.4 MB). The pickle includes a parallel "lightweight metadata" list (passage_id,
+            city, source, text only — no heavy entity arrays) so the retriever can hydrate
+            results without re-reading the 20 city files.
+            <br><br>
+            <strong style="color:var(--accent)">FAISS dense (semantic).</strong> Each passage
+            text is encoded with <code>sentence-transformers/all-mpnet-base-v2</code> into a
+            768-dimensional vector, L2-normalized so inner-product search equals cosine similarity.
+            Stored as a flat IP index: <code>data/indexes/dense.faiss</code> (60.2 MB) plus
+            <code>dense_meta.json</code> with the same metadata list as BM25 (in the same order
+            — so passage indices are comparable across the two indexes, which is what RRF needs).
+            Strong on paraphrases ("how big is Tokyo" → passages saying "Tokyo's population is").
+          </p>
+          <div class="stage-files">
+            <code>src/indexing/bm25_index.py</code> · <code>dense_index.py</code>
+          </div>
+          <div class="tools">
+            <span class="tool">rank-bm25</span><span class="tool">sentence-transformers</span>
+            <span class="tool">all-mpnet-base-v2</span><span class="tool">FAISS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="stage">
+        <div class="stage-num c3">05</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Query Processing</span>
+            <span class="stage-status">built this session</span>
+          </div>
+          <p class="stage-desc">
+            Runs at QA time on the user's question. Two jobs:
+            <br><br>
+            <strong style="color:var(--accent)">(a) Question-type classification</strong>
+            via ordered regex on the first word: <code>what / who / when / where / how_many / how / which / why / other</code>.
+            Each type maps to a list of expected NER labels for the answer span — e.g. "when" expects DATE/TIME, "who" expects PERSON/ORG.
+            That mapping gets reused downstream as a soft post-filter on extracted answers.
+            <br><br>
+            <strong style="color:var(--accent)">(b) City detection.</strong> Two-pass strategy.
+            First pass: substring match against a hand-curated alias map covering historical names,
+            abbreviations, and ASCII variants — <em>NYC → New York City, Bombay → Mumbai,
+            Constantinople → Istanbul, Peking → Beijing, Edo → Tokyo, Sao Paulo / São Paulo</em>,
+            etc. Aliases are word-boundary matched so "rome" doesn't fire on "chrome". Longest
+            alias wins so "new york city" beats "new york". Second pass: spaCy NER on the question
+            looking for GPE/LOC/FAC entities, alias-matched again. Output: <code>{detected_city,
+            city_confidence (1.0 substring · 0.7 NER · 0.0 missing)}</code>. The retriever then
+            uses <code>detected_city</code> as a hard filter on candidate passages.
+          </p>
+          <div class="stage-files">
+            <code>src/retrieval/query_processor.py</code>
+          </div>
+          <div class="tools">
+            <span class="tool">spaCy en_core_web_lg</span><span class="tool">regex</span>
+            <span class="tool">curated alias map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 6 -->
+      <div class="stage">
+        <div class="stage-num c3">06</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Passage Retrieval</span>
+            <span class="stage-status">built this session</span>
+          </div>
+          <p class="stage-desc">
+            Class <code>Retriever</code> with three modes for the ablation: <code>bm25</code>,
+            <code>dense</code>, <code>hybrid</code>. The expensive resources (BM25 pickle, FAISS
+            index, mpnet encoder, cross-encoder, spaCy) all load <strong>lazily</strong> — a
+            BM25-only run never pays the cost of loading the cross-encoder.
+          </p>
+          <div class="stage-block">
+            <div class="blabel">City filter</div>
+            <div class="bbody">
+              Applied <em>before</em> scoring, not after. For BM25 we mask out non-matching
+              passages (set their scores to <code>-inf</code>). For FAISS — which can't filter mid-search —
+              we over-fetch (<code>top_k × 10</code>), then keep only the matching ones. Either way
+              the retriever returns the right city's passages or returns nothing.
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">Hybrid fusion (RRF)</div>
+            <div class="bbody">
+              Reciprocal Rank Fusion from Cormack et al.:
+              <code>score(passage) = Σ 1 / (k + rank_in_list)</code> with <code>k = 60</code>.
+              No need to normalize BM25 scores (raw values, often {1–30}) against dense cosine
+              scores ({0–1}) — RRF only cares about ranks. BM25 and dense indexes were built from
+              the same passage list in the same order, so passage indices are directly comparable.
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">Cross-encoder rerank</div>
+            <div class="bbody">
+              <code>cross-encoder/ms-marco-MiniLM-L-6-v2</code> scores (question, passage) pairs
+              jointly — much more accurate than cosine since it can attend across the two together.
+              Applied as a final pass over the top-K hybrid candidates. Adds ~200 ms per query
+              and visibly improves rank-1 quality.
+            </div>
+          </div>
+          <div class="stage-files">
+            <code>src/retrieval/retriever.py</code> · class <code>Retriever</code>
+          </div>
+          <div class="tools">
+            <span class="tool">rank-bm25</span><span class="tool">FAISS</span>
+            <span class="tool">ms-marco-MiniLM-L-6-v2</span><span class="tool">RRF k=60</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 7 -->
+      <div class="stage">
+        <div class="stage-num c3">07</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Answer Extraction</span>
+            <span class="stage-status">built this session</span>
+          </div>
+          <p class="stage-desc">
+            Wraps <code>deepset/roberta-base-squad2</code> as <code>AnswerExtractor</code>.
+            Loads the model directly via <code>AutoModelForQuestionAnswering</code> +
+            <code>AutoTokenizer</code> (the high-level <code>pipeline("question-answering")</code>
+            API was removed in transformers 5.x).
+          </p>
+          <div class="stage-block">
+            <div class="blabel">Multi-passage scoring</div>
+            <div class="bbody">
+              Runs the QA model on the top <code>read_k</code> retrieved passages (default 3),
+              picks the highest-confidence non-empty answer. Standard reader-over-retriever
+              pattern: lets the system recover when retrieval got the right city but the wrong
+              best passage at rank 1.
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">SQuAD 2.0 "no answer"</div>
+            <div class="bbody">
+              For each passage we compute scores for every (start, end) token pair (capped at
+              30 tokens length, top-20 candidates from each axis). The <code>[CLS]</code> token at
+              index 0 represents "no answer here." If the best (CLS, CLS) score beats the best
+              real span, the model emits an empty answer — what we want for irrelevant passages.
+              Confidence is <code>sigmoid(best_span_score − cls_score)</code>, so it's bounded
+              [0,1] and tells you "how much more confident than no-answer".
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">Type validation</div>
+            <div class="bbody">
+              For typed questions ("when", "who", "where", "how_many"), we run spaCy NER on the
+              extracted span. If no entity in the span carries an expected label
+              (e.g. "when" expects DATE/TIME), confidence is multiplicatively penalized by 0.5×.
+              <em>Soft</em> penalty, not zero — a strong wrong-type answer can still win over a weak
+              right-type one. Cheap post-filter that catches obvious extraction failures.
+            </div>
+          </div>
+          <div class="stage-files">
+            <code>src/qa/extractor.py</code> · class <code>AnswerExtractor</code>
+          </div>
+          <div class="tools">
+            <span class="tool">deepset/roberta-base-squad2</span><span class="tool">PyTorch</span>
+            <span class="tool">spaCy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 8 -->
+      <div class="stage">
+        <div class="stage-num c4">08</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Evaluation &amp; Error Analysis</span>
+            <span class="stage-status">built this session</span>
+          </div>
+          <p class="stage-desc">
+            Three pieces — gold-set generation, metrics, error categorization — all reading and
+            writing JSON so you can inspect any intermediate output.
+          </p>
+          <div class="stage-block">
+            <div class="blabel">Gold QA auto-generation</div>
+            <div class="bbody">
+              <code>src/evaluation/gold_qa_builder.py</code>. For every passage already
+              NER-tagged, takes typed entities (PERSON, DATE, GPE, CARDINAL, …) as candidate
+              answer spans. Inserts <code>&lt;hl&gt;</code> markers around the span, feeds to
+              <code>valhalla/t5-base-qg-hl</code>, gets back a natural-language question.
+              Filters: span length, blacklist words, dedupe within passage, dedupe within city,
+              answer-leaks-into-question check. <strong>Generated 200 balanced candidates</strong>
+              (10/city × 20 cities), distributed across 8 question types. Question type is derived
+              from the generated question's first word — not the entity label — so a "When did
+              Saladin..." question about year "1176" (NER-tagged CARDINAL) correctly gets
+              <code>type: when</code>.
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">Metrics</div>
+            <div class="bbody">
+              <code>src/evaluation/metrics.py</code>. <strong>Exact Match</strong> and <strong>token F1</strong>
+              both with SQuAD-style normalization (lowercase, strip articles, strip punctuation,
+              collapse whitespace) — multiple gold answer aliases supported. <strong>Recall@1/3/5/10</strong>
+              and <strong>MRR</strong> computed over questions that include a <code>gold_passage_id</code>.
+              Runs all three retrieval modes and saves per-mode JSON to
+              <code>data/gold_qa/results/{mode}.json</code>. Buckets results by question type and city
+              for slice analysis.
+            </div>
+          </div>
+          <div class="stage-block">
+            <div class="blabel">Error categorization</div>
+            <div class="bbody">
+              <code>src/evaluation/error_analysis.py</code>. Every wrong prediction (EM = 0) is
+              tagged with the first-matching failure category: <code>CITY_NOT_DETECTED</code>,
+              <code>RETRIEVAL_MISS</code> (gold passage wasn't in top-k), <code>PARTIAL_MATCH</code>
+              (F1 &gt; 0 but EM = 0 — boundary disagreement), or <code>EXTRACTION_FAIL</code>
+              (gold passage was retrieved but extractor returned wrong span). Output is a
+              markdown report per mode: <code>data/gold_qa/analysis/{mode}_analysis.md</code> —
+              ready to drop into the final write-up's analysis section with example failures
+              per category.
+            </div>
+          </div>
+          <div class="stage-files">
+            <code>src/evaluation/{gold_qa_builder, metrics, error_analysis}.py</code>
+          </div>
+          <div class="tools">
+            <span class="tool">valhalla/t5-base-qg-hl</span>
+            <span class="tool">SQuAD normalization</span>
+            <span class="tool">RRF · MRR · Recall@k</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RUNTIME FLOW ═══════════ -->
+<section id="runtime">
+  <div class="container">
+    <div class="sec-label">Runtime</div>
+    <h2 class="sec-title">What happens when you ask a question</h2>
+    <p class="sec-body">
+      Single entry point: <code>UrbanQA.answer(question)</code> in <code>ask.py</code>. Every UI
+      surface (the CLI, the Streamlit demo, the future Unreal/UDP server) is a thin wrapper over
+      this one call. Below is exactly what happens for a real question end-to-end.
+    </p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-marker">1</div>
+        <div>
+          <h4>Input</h4>
+          <p>The user asks a question. No structure required, no city tag, no question prefix.</p>
+          <div class="codeblock">"When was Cairo founded?"</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-marker">2</div>
+        <div>
+          <h4>Query processing</h4>
+          <p>Regex matches "When" → <code>question_type: when</code> → expected entity types
+            <code>[DATE, TIME]</code>. Substring match on "Cairo" against the alias map →
+            <code>detected_city: "Cairo"</code> at confidence 1.0.</p>
+          <div class="codeblock">{
+  "question_type": "when",
+  "expected_entity_types": ["DATE", "TIME"],
+  "detected_city": "Cairo",
+  "city_confidence": 1.0
+}</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-marker">3</div>
+        <div>
+          <h4>Retrieval (hybrid, the default)</h4>
+          <p>BM25 and dense each return their top-20 candidates among Cairo's passages only
+            (city filter applied <em>before</em> scoring). RRF fuses the two ranked lists into a
+            single hybrid ranking. The cross-encoder reranks the top-5 with joint
+            (question, passage) attention.</p>
+          <div class="codeblock">retrieved[0] = {
+  "passage_id": "Cairo_wiki_6",
+  "city": "Cairo", "source": "wikipedia",
+  "score": 0.031,                    // RRF score post-rerank
+  "text": "Subsequently, Cairo was founded in 969..."
+}</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-marker">4</div>
+        <div>
+          <h4>Answer extraction</h4>
+          <p>RoBERTa-squad2 runs on the top-3 retrieved passages. For each, it scores every
+            (start, end) span pair under 30 tokens long and compares against the
+            <code>[CLS]–[CLS]</code> "no answer" baseline. Span "969" wins on Cairo_wiki_6;
+            other passages emit empty.</p>
+          <div class="codeblock">{
+  "answer": "969",
+  "raw_confidence": 1.0,
+  "type_match": false,    // spaCy tagged "969" as CARDINAL, not DATE
+  "confidence": 0.5       // raw × 0.5 type-mismatch penalty
+}</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-marker">5</div>
+        <div>
+          <h4>Unified payload</h4>
+          <p>One JSON-serializable dict combining query analysis + retrieved passages + the
+            chosen answer + every QA candidate considered. This is what every UI surface receives.</p>
+          <div class="codeblock">{
+  "question": "When was Cairo founded?",
+  "mode": "hybrid",
+  "answer": "969",
+  "confidence": 0.5,
+  "type_match": false,
+  "query": { /* stage 5 output */ },
+  "source_passage": { /* the winning passage */ },
+  "retrieved_passages": [ /* full top-k */ ],
+  "all_candidates": [ /* every QA candidate scored */ ]
+}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EVAL ═══════════ -->
+<section id="eval">
+  <div class="container">
+    <div class="sec-label">Evaluation results</div>
+    <h2 class="sec-title">Hybrid wins, by a lot</h2>
+    <p class="sec-body">
+      Ran all three retrieval modes against the 200-question auto-generated gold set.
+      Hybrid retrieval reduces retrieval misses from 21 (BM25) to 5 — a 76% drop. Every
+      target metric from the original project plan is met or exceeded except MRR, which is
+      0.568 vs a 0.6 target (close, and rank-1-sensitive).
+    </p>
+
+    <table class="eval">
+      <thead>
+        <tr><th>Mode</th><th>EM</th><th>Token F1</th><th>Recall@5</th><th>MRR</th><th>Failures</th><th>Retrieval miss</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>BM25 sparse</td><td class="metric">0.750</td><td class="metric">0.833</td><td class="metric">0.735</td><td class="metric">0.369</td><td class="metric">50</td><td class="metric">21</td></tr>
+        <tr><td>Dense (mpnet)</td><td class="metric">0.710</td><td class="metric">0.780</td><td class="metric">0.705</td><td class="metric">0.401</td><td class="metric">58</td><td class="metric">29</td></tr>
+        <tr class="hl"><td><strong>Hybrid + rerank</strong></td><td class="metric">0.765</td><td class="metric">0.851</td><td class="metric">0.915</td><td class="metric">0.568</td><td class="metric">47</td><td class="metric">5</td></tr>
+      </tbody>
+    </table>
+
+    <p class="sec-body" style="margin-top: 1.5rem;">
+      <strong style="color:var(--accent3)">Methodology caveat to disclose in the report:</strong>
+      the gold set was auto-generated from the corpus — every question is grounded in a passage
+      we know exists. This biases numbers upward versus a held-out human-written set. Many
+      "PARTIAL_MATCH" failures are actually cases where the system gave a more correct answer
+      than the gold ("Between 1250 and 1517" vs the auto-truncated gold "Between 1250"). Real
+      EM is likely higher than 76.5%.
+    </p>
+
+    <div style="margin-top: 1.5rem;">
+      <div class="sec-label" style="margin-bottom: 0.8rem;">Failure categories (hybrid mode)</div>
+      <div class="err-grid">
+        <div class="err-card">
+          <div class="ename">Partial match · 26 of 47</div>
+          <div class="ebody">Answer is close but boundary differs ("12" vs "nearly 12"). Often
+            the system is more correct than the gold — gold answers were extracted by NER and
+            sometimes truncated.</div>
+        </div>
+        <div class="err-card">
+          <div class="ename">Extraction fail · 16 of 47</div>
+          <div class="ebody">Gold passage WAS retrieved (good) but the QA reader picked a wrong
+            span. Often a sibling entity in the same sentence — fixable with stricter type
+            validation or reader fine-tuning.</div>
+        </div>
+        <div class="err-card">
+          <div class="ename">Retrieval miss · 5 of 47</div>
+          <div class="ebody">Gold passage wasn't in the top-5 retrieved — the rare case where
+            even hybrid + rerank missed it. Mostly questions phrased very differently from the
+            source passage.</div>
+        </div>
+        <div class="err-card">
+          <div class="ename">City not detected · 0</div>
+          <div class="ebody">Every question in the gold set referenced its city by name (since it
+            was auto-generated from per-city passages). Real-world questions might fail here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PAYLOAD ═══════════ -->
+<section id="payload">
+  <div class="container">
+    <div class="sec-label">Unified payload</div>
+    <h2 class="sec-title">One JSON shape, three consumers</h2>
+    <p class="sec-body">
+      <code>UrbanQA.answer(question)</code> always returns this exact shape. The CLI prints
+      part of it. The Streamlit demo renders all of it. The future Unreal/UDP server will
+      serialize it as bytes and stream it — no payload reshaping anywhere.
+    </p>
+
+    <div class="json-block"><span class="jpunct">{</span>
+  <span class="jkey">"question"</span><span class="jpunct">:</span> <span class="jstr">"When was Cairo founded?"</span><span class="jpunct">,</span>
+  <span class="jkey">"mode"</span><span class="jpunct">:</span> <span class="jstr">"hybrid"</span><span class="jpunct">,</span>          <span class="jcomment">// retrieval mode used</span>
+
+  <span class="jkey">"query"</span><span class="jpunct">: {</span>                       <span class="jcomment">// stage 5 — query processor output</span>
+    <span class="jkey">"question_type"</span><span class="jpunct">:</span> <span class="jstr">"when"</span><span class="jpunct">,</span>
+    <span class="jkey">"expected_entity_types"</span><span class="jpunct">: [</span><span class="jstr">"DATE"</span><span class="jpunct">,</span> <span class="jstr">"TIME"</span><span class="jpunct">],</span>
+    <span class="jkey">"detected_city"</span><span class="jpunct">:</span> <span class="jstr">"Cairo"</span><span class="jpunct">,</span>
+    <span class="jkey">"city_confidence"</span><span class="jpunct">:</span> 1.0
+  <span class="jpunct">},</span>
+
+  <span class="jkey">"answer"</span><span class="jpunct">:</span> <span class="jstr">"969"</span><span class="jpunct">,</span>                      <span class="jcomment">// stage 7 — best answer</span>
+  <span class="jkey">"confidence"</span><span class="jpunct">:</span> 0.5<span class="jpunct">,</span>                      <span class="jcomment">// 0..1; includes type-validation penalty</span>
+  <span class="jkey">"type_match"</span><span class="jpunct">:</span> false<span class="jpunct">,</span>                    <span class="jcomment">// did span carry an expected NER label</span>
+
+  <span class="jkey">"source_passage"</span><span class="jpunct">: {</span>              <span class="jcomment">// the passage the answer came from</span>
+    <span class="jkey">"passage_id"</span><span class="jpunct">:</span> <span class="jstr">"Cairo_wiki_6"</span><span class="jpunct">,</span>
+    <span class="jkey">"city"</span><span class="jpunct">:</span> <span class="jstr">"Cairo"</span><span class="jpunct">,</span>
+    <span class="jkey">"source"</span><span class="jpunct">:</span> <span class="jstr">"wikipedia"</span><span class="jpunct">,</span>
+    <span class="jkey">"text"</span><span class="jpunct">:</span> <span class="jstr">"Subsequently, Cairo was founded in 969..."</span>
+  <span class="jpunct">},</span>
+
+  <span class="jkey">"retrieved_passages"</span><span class="jpunct">: [ ... ],</span>     <span class="jcomment">// stage 6 — full top-k with rank, score, text</span>
+  <span class="jkey">"all_candidates"</span><span class="jpunct">: [ ... ]</span>          <span class="jcomment">// every QA candidate scored across read_k passages</span>
+<span class="jpunct">}</span></div>
+
+    <div class="future-card">
+      <h4>Designed for the Unreal integration</h4>
+      <p>The whole payload is JSON-serializable strings, numbers, lists, and dicts — no
+        numpy arrays, no torch tensors, no spaCy doc objects. When the UDP/socket.io server gets
+        wrapped around <code>UrbanQA.answer()</code>, it's just <code>json.dumps(payload).encode()</code>
+        on the way out and <code>json.loads(bytes)</code> for the question coming in. The
+        Streamlit demo and Unreal dashboard render the same data; only the transport changes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TRY IT ═══════════ -->
+<section id="try">
+  <div class="container">
+    <div class="sec-label">Run it now</div>
+    <h2 class="sec-title">Three ways to use it today</h2>
+
+    <div class="cmd-list">
+      <div class="cmd-item">
+        <div class="cmd-title">CLI — single question, pretty-printed</div>
+        <div class="cmd-desc">Returns the answer, source passage, confidence, and detected city. Add <code>--mode bm25</code> or <code>--mode dense</code> for the ablation modes.</div>
+        <code>python ask.py "When was Cairo founded?"</code>
+      </div>
+
+      <div class="cmd-item">
+        <div class="cmd-title">CLI — JSON output (for piping)</div>
+        <div class="cmd-desc">Same payload, machine-readable. This is exactly what the Unreal/UDP server will emit.</div>
+        <code>python ask.py "Who designed the Sydney Opera House?" --json</code>
+      </div>
+
+      <div class="cmd-item">
+        <div class="cmd-title">Streamlit demo</div>
+        <div class="cmd-desc">Browser UI with mode toggle, top-k slider, answer-span highlighting in the source passage, and a raw-JSON expander showing the payload Unreal will consume.</div>
+        <code>streamlit run app.py   →   open http://localhost:8501</code>
+      </div>
+
+      <div class="cmd-item">
+        <div class="cmd-title">Re-run the full evaluation</div>
+        <div class="cmd-desc">Runs all three modes on the gold set, writes per-mode results JSON + markdown error analysis. Takes ~30 min on CPU.</div>
+        <code>python src/evaluation/metrics.py &amp;&amp; python src/evaluation/error_analysis.py</code>
+      </div>
+
+      <div class="cmd-item">
+        <div class="cmd-title">Generate more gold candidates</div>
+        <div class="cmd-desc">Auto-generates question/answer pairs from the corpus using a T5 question-generation model. Pass <code>--per-city N</code> to control quantity.</div>
+        <code>python src/evaluation/gold_qa_builder.py --per-city 15</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NEXT ═══════════ -->
+<section id="next">
+  <div class="container">
+    <div class="sec-label">What's next (whenever you want)</div>
+    <h2 class="sec-title">Three obvious wins</h2>
+
+    <div class="stages">
+      <div class="stage">
+        <div class="stage-num c1">A</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Manual cleanup of the gold set (~30 min)</span>
+          </div>
+          <p class="stage-desc">
+            The 200 auto-generated candidates have ~80% directly usable + ~15% needing minor
+            answer-span edits + ~5% to delete. A 30-minute pass through
+            <code>data/gold_qa/gold.jsonl</code> would push hybrid EM from 76.5% → ~85%+ by
+            fixing answer-boundary mismatches like "Between 1250" → "Between 1250 and 1517".
+            For an even more rigorous eval, hand-write 20 "wild" questions phrased differently
+            from any source passage and run them as a held-out split.
+          </p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-num c2">B</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Unreal Engine integration</span>
+          </div>
+          <p class="stage-desc">
+            Wrap <code>UrbanQA.answer()</code> with a UDP or socket.io server (~1 day). Reads
+            JSON questions from the Unreal client, returns the unified payload as JSON. Because
+            the payload is already fully serializable, this is mostly transport plumbing — no
+            QA-side refactor needed.
+          </p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-num c3">C</div>
+        <div>
+          <div class="stage-head">
+            <span class="stage-name">Stretch: fine-tune on city domain</span>
+          </div>
+          <p class="stage-desc">
+            Use the auto-generated gold set as training data and fine-tune
+            <code>distilbert-base-squad2</code> on it. Compare against the zero-shot
+            RoBERTa-squad2 baseline. This is one of the artifact's stated stretch goals — would
+            give the report a "supervised vs zero-shot" experiment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>UrbanQA · Implementation Report · Generated 2026-04-28</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

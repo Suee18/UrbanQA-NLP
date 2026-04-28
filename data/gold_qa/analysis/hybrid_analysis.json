@@ -1,0 +1,358 @@
+{
+  "n_total": 200,
+  "n_failures": 47,
+  "categories": {
+    "PARTIAL_MATCH": 26,
+    "RETRIEVAL_MISS": 5,
+    "EXTRACTION_FAIL": 16
+  },
+  "examples": {
+    "PARTIAL_MATCH": [
+      {
+        "id": "001",
+        "question": "When did the throne of the Mamluk Sultanate pass from one mamluk to another?",
+        "city": "Cairo",
+        "question_type": "when",
+        "predicted": "Between 1250 and 1517",
+        "gold": [
+          "Between 1250"
+        ],
+        "em": 0.0,
+        "f1": 0.6666666666666666,
+        "source_passage": "Cairo_wiki_92",
+        "retrieved": [
+          "Cairo_wiki_92",
+          "Cairo_tourism_0_79",
+          "Cairo_tourism_0_78",
+          "Cairo_wiki_91",
+          "Cairo_tourism_0_77"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25
+      },
+      {
+        "id": "006",
+        "question": "How many times higher is the air pollution in Cairo than the safety level?",
+        "city": "Cairo",
+        "question_type": "how_many",
+        "predicted": "12",
+        "gold": [
+          "nearly 12"
+        ],
+        "em": 0.0,
+        "f1": 0.6666666666666666,
+        "source_passage": "Cairo_tourism_2_3",
+        "retrieved": [
+          "Cairo_tourism_2_4",
+          "Cairo_wiki_210",
+          "Cairo_tourism_2_3",
+          "Cairo_wiki_209",
+          "Cairo_wiki_208"
+        ],
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "010",
+        "question": "How many lines are in the Metro system?",
+        "city": "Cairo",
+        "question_type": "how_many",
+        "predicted": "three operational lines numbered from 1 to 3",
+        "gold": [
+          "1 to 3"
+        ],
+        "em": 0.0,
+        "f1": 0.5454545454545454,
+        "source_passage": "Cairo_tourism_2_120",
+        "retrieved": [
+          "Cairo_tourism_2_121",
+          "Cairo_wiki_322",
+          "Cairo_tourism_2_120",
+          "Cairo_wiki_321",
+          "Cairo_tourism_2_119"
+        ],
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0
+      }
+    ],
+    "RETRIEVAL_MISS": [
+      {
+        "id": "004",
+        "question": "When did Tahrir Square continue to be the primary destination for protests in Cairo?",
+        "city": "Cairo",
+        "question_type": "when",
+        "predicted": "In the following days",
+        "gold": [
+          "the following days"
+        ],
+        "em": 0.0,
+        "f1": 0.8,
+        "source_passage": "Cairo_wiki_180",
+        "retrieved": [
+          "Cairo_tourism_1_60",
+          "Cairo_wiki_181",
+          "Cairo_wiki_180",
+          "Cairo_tourism_1_59",
+          "Cairo_tourism_1_61"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0
+      },
+      {
+        "id": "096",
+        "question": "Who directs the administration of Beijing?",
+        "city": "Beijing",
+        "question_type": "who",
+        "predicted": "Municipal CCP Committee",
+        "gold": [
+          "the State Council"
+        ],
+        "em": 0.0,
+        "f1": 0.0,
+        "source_passage": "Beijing_tourism_3_56",
+        "retrieved": [
+          "Beijing_tourism_3_56",
+          "Beijing_wiki_210",
+          "Beijing_tourism_3_55",
+          "Beijing_wiki_209",
+          "Beijing_tourism_9_177"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0
+      },
+      {
+        "id": "106",
+        "question": "How many municipalities are in the State of Mexico?",
+        "city": "Mexico City",
+        "question_type": "how_many",
+        "predicted": "twenty-two",
+        "gold": [
+          "59"
+        ],
+        "em": 0.0,
+        "f1": 0.0,
+        "source_passage": "Mexico City_tourism_3_100",
+        "retrieved": [
+          "Mexico City_tourism_3_100",
+          "Mexico City_wiki_286",
+          "Mexico City_tourism_3_99",
+          "Mexico City_wiki_285",
+          "Mexico City_tourism_3_46"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0
+      }
+    ],
+    "EXTRACTION_FAIL": [
+      {
+        "id": "009",
+        "question": "What organization offers support for company incorporation?",
+        "city": "Cairo",
+        "question_type": "what",
+        "predicted": "GAFI's Investor Service Center",
+        "gold": [
+          "GAFI"
+        ],
+        "em": 0.0,
+        "f1": 0.0,
+        "source_passage": "Cairo_tourism_2_79",
+        "retrieved": [
+          "Cairo_wiki_279",
+          "Cairo_tourism_2_78",
+          "Cairo_tourism_2_79",
+          "Cairo_wiki_280",
+          "Cairo_tourism_2_77"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "020",
+        "question": "In what year did Paris host the FIFA World Cup?",
+        "city": "Paris",
+        "question_type": "other",
+        "predicted": "1998",
+        "gold": [
+          "1938"
+        ],
+        "em": 0.0,
+        "f1": 0.0,
+        "source_passage": "Paris_tourism_9_122",
+        "retrieved": [
+          "Paris_wiki_507",
+          "Paris_tourism_9_121",
+          "Paris_tourism_9_122",
+          "Paris_wiki_508",
+          "Paris_wiki_506"
+        ],
+        "recall@1": 0.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333
+      },
+      {
+        "id": "043",
+        "question": "What is the largest municipal healthcare system in the United States?",
+        "city": "New York City",
+        "question_type": "what",
+        "predicted": "NYC Health + Hospitals",
+        "gold": [
+          "HHC"
+        ],
+        "em": 0.0,
+        "f1": 0.0,
+        "source_passage": "New York City_tourism_8_42",
+        "retrieved": [
+          "New York City_tourism_8_43",
+          "New York City_wiki_473",
+          "New York City_tourism_8_42",
+          "New York City_wiki_471",
+          "New York City_tourism_8_46"
+        ],
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0
+      }
+    ]
+  },
+  "by_question_type": {
+    "when": {
+      "failures": 7,
+      "total": 31
+    },
+    "where": {
+      "failures": 0,
+      "total": 8
+    },
+    "how_many": {
+      "failures": 6,
+      "total": 18
+    },
+    "what": {
+      "failures": 20,
+      "total": 83
+    },
+    "other": {
+      "failures": 3,
+      "total": 28
+    },
+    "who": {
+      "failures": 7,
+      "total": 22
+    },
+    "which": {
+      "failures": 1,
+      "total": 6
+    },
+    "how": {
+      "failures": 3,
+      "total": 4
+    }
+  },
+  "by_city": {
+    "Cairo": {
+      "failures": 5,
+      "total": 10
+    },
+    "Paris": {
+      "failures": 2,
+      "total": 10
+    },
+    "Tokyo": {
+      "failures": 1,
+      "total": 10
+    },
+    "London": {
+      "failures": 2,
+      "total": 10
+    },
+    "New York City": {
+      "failures": 3,
+      "total": 10
+    },
+    "Istanbul": {
+      "failures": 2,
+      "total": 10
+    },
+    "Buenos Aires": {
+      "failures": 2,
+      "total": 10
+    },
+    "Lagos": {
+      "failures": 4,
+      "total": 10
+    },
+    "Mumbai": {
+      "failures": 1,
+      "total": 10
+    },
+    "Beijing": {
+      "failures": 2,
+      "total": 10
+    },
+    "Mexico City": {
+      "failures": 2,
+      "total": 10
+    },
+    "São Paulo": {
+      "failures": 3,
+      "total": 10
+    },
+    "Berlin": {
+      "failures": 2,
+      "total": 10
+    },
+    "Sydney": {
+      "failures": 2,
+      "total": 10
+    },
+    "Dubai": {
+      "failures": 1,
+      "total": 10
+    },
+    "Rome": {
+      "failures": 3,
+      "total": 10
+    },
+    "Bangkok": {
+      "failures": 3,
+      "total": 10
+    },
+    "Toronto": {
+      "failures": 2,
+      "total": 10
+    },
+    "Nairobi": {
+      "failures": 2,
+      "total": 10
+    },
+    "Jakarta": {
+      "failures": 3,
+      "total": 10
+    }
+  }
+}
