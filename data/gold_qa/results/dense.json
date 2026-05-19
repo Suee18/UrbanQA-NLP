@@ -1,14 +1,19 @@
 {
   "mode": "dense",
   "n_questions": 200,
-  "em": 0.71,
-  "f1": 0.7800873015873016,
-  "recall@1": 0.225,
+  "em": 0.705,
+  "f1": 0.7750873015873015,
+  "recall@1": 0.22,
   "recall@3": 0.535,
-  "recall@5": 0.705,
-  "recall@10": 0.705,
-  "mrr": 0.40149999999999997,
+  "recall@5": 0.7,
+  "recall@10": 0.7,
+  "mrr": 0.3969166666666667,
   "n_with_gold_passage": 200,
+  "content_recall@1": 0.84,
+  "content_recall@3": 0.905,
+  "content_recall@5": 0.93,
+  "content_recall@10": 0.93,
+  "content_mrr": 0.86775,
   "by_question_type": {
     "when": {
       "em": 0.7419354838709677,
@@ -26,8 +31,8 @@
       "n": 18
     },
     "what": {
-      "em": 0.6987951807228916,
-      "f1": 0.7532797858099063,
+      "em": 0.6867469879518072,
+      "f1": 0.7412315930388219,
       "n": 83
     },
     "other": {
@@ -148,8 +153,8 @@
       "n": 10
     },
     "Jakarta": {
-      "em": 0.6,
-      "f1": 0.8055555555555556,
+      "em": 0.5,
+      "f1": 0.7055555555555555,
       "n": 10
     }
   },
@@ -177,7 +182,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "002",
@@ -202,7 +212,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "003",
@@ -227,7 +242,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "004",
@@ -252,7 +272,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "005",
@@ -277,7 +302,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "006",
@@ -302,7 +332,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "007",
@@ -327,7 +362,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "008",
@@ -352,7 +392,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "009",
@@ -377,7 +422,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "010",
@@ -402,7 +452,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "011",
@@ -427,7 +482,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "012",
@@ -452,7 +512,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "013",
@@ -477,7 +542,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "014",
@@ -502,7 +572,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "015",
@@ -527,7 +602,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "016",
@@ -552,7 +632,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "017",
@@ -577,7 +662,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "018",
@@ -602,7 +692,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "019",
@@ -627,7 +722,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "020",
@@ -652,7 +752,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "021",
@@ -677,7 +782,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "022",
@@ -702,7 +812,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "023",
@@ -727,7 +842,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "024",
@@ -752,7 +872,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "025",
@@ -777,7 +902,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "026",
@@ -802,7 +932,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "027",
@@ -827,7 +962,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "028",
@@ -852,7 +992,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "029",
@@ -877,7 +1022,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "030",
@@ -902,7 +1052,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "031",
@@ -927,7 +1082,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "032",
@@ -940,10 +1100,10 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "London_tourism_0_21",
+      "source_passage": "London_wiki_45",
       "retrieved": [
-        "London_tourism_0_21",
         "London_wiki_45",
+        "London_tourism_0_21",
         "London_tourism_0_22",
         "London_wiki_46",
         "London_tourism_0_20"
@@ -952,7 +1112,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "033",
@@ -977,7 +1142,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "034",
@@ -1002,7 +1172,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "035",
@@ -1019,15 +1194,20 @@
       "retrieved": [
         "London_tourism_4_11",
         "London_wiki_257",
-        "London_wiki_256",
         "London_tourism_4_10",
+        "London_wiki_256",
         "London_tourism_4_9"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "036",
@@ -1052,7 +1232,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "037",
@@ -1077,7 +1262,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "038",
@@ -1102,7 +1292,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "039",
@@ -1127,7 +1322,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "040",
@@ -1142,8 +1342,8 @@
       "f1": 0.8,
       "source_passage": "London_tourism_4_99",
       "retrieved": [
-        "London_wiki_344",
         "London_tourism_4_98",
+        "London_wiki_344",
         "London_tourism_4_99",
         "London_wiki_345",
         "London_tourism_4_97"
@@ -1152,7 +1352,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "041",
@@ -1177,7 +1382,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "042",
@@ -1202,7 +1412,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "043",
@@ -1227,7 +1442,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "044",
@@ -1252,7 +1472,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "045",
@@ -1277,7 +1502,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "046",
@@ -1302,7 +1532,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "047",
@@ -1327,7 +1562,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "048",
@@ -1352,7 +1592,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "049",
@@ -1377,7 +1622,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "050",
@@ -1402,7 +1652,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "051",
@@ -1427,7 +1682,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "052",
@@ -1442,17 +1702,22 @@
       "f1": 1.0,
       "source_passage": "Istanbul_tourism_5_86",
       "retrieved": [
-        "Istanbul_wiki_429",
         "Istanbul_tourism_5_87",
+        "Istanbul_wiki_429",
         "Istanbul_tourism_5_86",
         "Istanbul_wiki_428",
         "Istanbul_tourism_5_85"
       ],
-      "recall@1": 1.0,
+      "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "053",
@@ -1477,7 +1742,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "054",
@@ -1502,7 +1772,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "055",
@@ -1527,7 +1802,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "056",
@@ -1552,7 +1832,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "057",
@@ -1577,7 +1862,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "058",
@@ -1602,7 +1892,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "059",
@@ -1627,7 +1922,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "060",
@@ -1652,7 +1952,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "061",
@@ -1677,7 +1982,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "062",
@@ -1702,7 +2012,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "063",
@@ -1727,7 +2042,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "064",
@@ -1752,7 +2072,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "065",
@@ -1777,7 +2102,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "066",
@@ -1802,7 +2132,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "067",
@@ -1815,19 +2150,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Buenos Aires_wiki_296",
+      "source_passage": "Buenos Aires_tourism_3_0",
       "retrieved": [
-        "Buenos Aires_wiki_296",
         "Buenos Aires_tourism_3_0",
+        "Buenos Aires_wiki_296",
         "Buenos Aires_wiki_0",
         "Buenos Aires_tourism_3_1",
         "Buenos Aires_wiki_297"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "068",
@@ -1852,7 +2192,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "069",
@@ -1877,7 +2222,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "070",
@@ -1902,7 +2252,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "071",
@@ -1927,7 +2282,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "072",
@@ -1945,14 +2305,18 @@
         "Lagos_tourism_2_127",
         "Lagos_wiki_199",
         "Lagos_tourism_2_126",
-        "Lagos_wiki_198",
-        "Lagos_wiki_197"
+        "Lagos_wiki_198"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "073",
@@ -1977,7 +2341,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "074",
@@ -2002,7 +2371,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "075",
@@ -2027,7 +2401,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "076",
@@ -2052,7 +2431,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "077",
@@ -2077,7 +2461,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "078",
@@ -2102,7 +2491,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "079",
@@ -2127,7 +2521,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "080",
@@ -2152,7 +2551,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "081",
@@ -2177,7 +2581,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "082",
@@ -2202,7 +2611,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "083",
@@ -2227,7 +2641,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "084",
@@ -2252,7 +2671,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "085",
@@ -2277,7 +2701,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "086",
@@ -2302,7 +2731,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "087",
@@ -2326,7 +2760,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "088",
@@ -2351,7 +2790,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.25
     },
     {
       "id": "089",
@@ -2376,7 +2820,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "090",
@@ -2401,7 +2850,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "091",
@@ -2426,7 +2880,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "092",
@@ -2451,7 +2910,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "093",
@@ -2476,7 +2940,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "094",
@@ -2501,7 +2970,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.2
     },
     {
       "id": "095",
@@ -2526,7 +3000,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "096",
@@ -2551,7 +3030,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "097",
@@ -2576,7 +3060,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "098",
@@ -2601,7 +3090,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "099",
@@ -2626,7 +3120,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "100",
@@ -2644,14 +3143,19 @@
         "Beijing_tourism_0_34",
         "Beijing_wiki_55",
         "Beijing_tourism_0_36",
-        "Beijing_tourism_0_29",
-        "Beijing_wiki_50"
+        "Beijing_wiki_50",
+        "Beijing_tourism_0_29"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "101",
@@ -2676,7 +3180,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "102",
@@ -2701,7 +3210,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "103",
@@ -2726,7 +3240,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "104",
@@ -2739,10 +3258,10 @@
       ],
       "em": 0.0,
       "f1": 0.0,
-      "source_passage": "Mexico City_tourism_0_8",
+      "source_passage": "Mexico City_wiki_48",
       "retrieved": [
-        "Mexico City_tourism_0_8",
         "Mexico City_wiki_48",
+        "Mexico City_tourism_0_8",
         "Mexico City_tourism_0_9",
         "Mexico City_wiki_49",
         "Mexico City_tourism_0_6"
@@ -2751,7 +3270,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "105",
@@ -2776,7 +3300,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "106",
@@ -2801,7 +3330,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "107",
@@ -2826,7 +3360,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "108",
@@ -2851,7 +3390,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "109",
@@ -2876,7 +3420,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "110",
@@ -2901,7 +3450,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "111",
@@ -2919,14 +3473,19 @@
         "São Paulo_wiki_0",
         "São Paulo_tourism_1_91",
         "São Paulo_wiki_112",
-        "São Paulo_wiki_111",
-        "São Paulo_tourism_1_90"
+        "São Paulo_tourism_1_90",
+        "São Paulo_wiki_111"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "112",
@@ -2951,7 +3510,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "113",
@@ -2964,19 +3528,24 @@
       ],
       "em": 0.0,
       "f1": 0.0,
-      "source_passage": "São Paulo_tourism_1_107",
+      "source_passage": "São Paulo_wiki_128",
       "retrieved": [
-        "São Paulo_tourism_1_107",
         "São Paulo_wiki_128",
+        "São Paulo_tourism_1_107",
         "São Paulo_tourism_1_112",
         "São Paulo_wiki_133",
         "São Paulo_tourism_1_106"
       ],
-      "recall@1": 1.0,
+      "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "114",
@@ -3001,7 +3570,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "115",
@@ -3026,7 +3600,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "116",
@@ -3051,7 +3630,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "117",
@@ -3076,7 +3660,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "118",
@@ -3101,7 +3690,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "119",
@@ -3116,8 +3710,8 @@
       "f1": 0.0,
       "source_passage": "São Paulo_tourism_15_2",
       "retrieved": [
-        "São Paulo_wiki_198",
         "São Paulo_tourism_2_4",
+        "São Paulo_wiki_198",
         "São Paulo_tourism_15_2",
         "São Paulo_wiki_583",
         "São Paulo_tourism_12_6"
@@ -3126,7 +3720,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "120",
@@ -3151,7 +3750,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "121",
@@ -3176,7 +3780,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "122",
@@ -3201,7 +3810,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "123",
@@ -3226,7 +3840,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "124",
@@ -3251,7 +3870,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "125",
@@ -3276,7 +3900,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "126",
@@ -3301,7 +3930,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "127",
@@ -3326,7 +3960,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "128",
@@ -3351,7 +3990,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "129",
@@ -3376,7 +4020,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "130",
@@ -3391,17 +4040,22 @@
       "f1": 0.6666666666666666,
       "source_passage": "Berlin_tourism_4_14",
       "retrieved": [
-        "Berlin_wiki_156",
         "Berlin_tourism_4_16",
+        "Berlin_wiki_156",
         "Berlin_tourism_4_14",
         "Berlin_wiki_154",
         "Berlin_tourism_4_15"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "131",
@@ -3426,7 +4080,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "132",
@@ -3451,7 +4110,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "133",
@@ -3476,7 +4140,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "134",
@@ -3501,7 +4170,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "135",
@@ -3526,7 +4200,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "136",
@@ -3551,7 +4230,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "137",
@@ -3576,7 +4260,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "138",
@@ -3601,7 +4290,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "139",
@@ -3626,7 +4320,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "140",
@@ -3641,8 +4340,8 @@
       "f1": 1.0,
       "source_passage": "Sydney_tourism_13_59",
       "retrieved": [
-        "Sydney_tourism_13_58",
         "Sydney_wiki_525",
+        "Sydney_tourism_13_58",
         "Sydney_tourism_13_59",
         "Sydney_wiki_526",
         "Sydney_tourism_13_60"
@@ -3651,7 +4350,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "141",
@@ -3676,7 +4380,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "142",
@@ -3701,7 +4410,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "143",
@@ -3726,7 +4440,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "144",
@@ -3751,7 +4470,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "145",
@@ -3776,7 +4500,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "146",
@@ -3801,7 +4530,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "147",
@@ -3826,7 +4560,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "148",
@@ -3851,7 +4590,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "149",
@@ -3876,7 +4620,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "150",
@@ -3901,7 +4650,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "151",
@@ -3926,7 +4680,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "152",
@@ -3951,7 +4710,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "153",
@@ -3976,7 +4740,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "154",
@@ -4001,7 +4770,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.2
     },
     {
       "id": "155",
@@ -4026,7 +4800,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.2
     },
     {
       "id": "156",
@@ -4051,7 +4830,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "157",
@@ -4066,8 +4850,8 @@
       "f1": 1.0,
       "source_passage": "Rome_tourism_11_7",
       "retrieved": [
-        "Rome_tourism_11_5",
         "Rome_wiki_504",
+        "Rome_tourism_11_5",
         "Rome_tourism_11_7",
         "Rome_wiki_506",
         "Rome_tourism_11_6"
@@ -4076,7 +4860,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "158",
@@ -4100,7 +4889,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "159",
@@ -4125,7 +4919,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "160",
@@ -4150,7 +4949,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "161",
@@ -4175,7 +4979,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "162",
@@ -4200,7 +5009,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "163",
@@ -4225,7 +5039,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "164",
@@ -4250,7 +5069,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "165",
@@ -4275,7 +5099,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "166",
@@ -4300,7 +5129,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "167",
@@ -4325,7 +5159,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "168",
@@ -4350,7 +5189,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "169",
@@ -4375,7 +5219,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "170",
@@ -4400,7 +5249,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "171",
@@ -4425,7 +5279,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "172",
@@ -4450,7 +5309,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.5
     },
     {
       "id": "173",
@@ -4475,7 +5339,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "174",
@@ -4488,19 +5357,24 @@
       ],
       "em": 0.0,
       "f1": 0.6666666666666666,
-      "source_passage": "Toronto_wiki_111",
+      "source_passage": "Toronto_tourism_1_92",
       "retrieved": [
         "Toronto_tourism_1_91",
         "Toronto_wiki_110",
-        "Toronto_wiki_111",
         "Toronto_tourism_1_92",
+        "Toronto_wiki_111",
         "Toronto_tourism_1_93"
       ],
       "recall@1": 0.0,
-      "recall@3": 0.0,
+      "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "175",
@@ -4525,7 +5399,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "176",
@@ -4550,7 +5429,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "177",
@@ -4575,7 +5459,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "178",
@@ -4600,7 +5489,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.2
     },
     {
       "id": "179",
@@ -4625,7 +5519,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "180",
@@ -4650,7 +5549,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "181",
@@ -4675,7 +5579,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "182",
@@ -4700,7 +5609,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "183",
@@ -4713,19 +5627,24 @@
       ],
       "em": 0.0,
       "f1": 0.0,
-      "source_passage": "Nairobi_tourism_5_84",
+      "source_passage": "Nairobi_wiki_413",
       "retrieved": [
         "Nairobi_tourism_5_85",
         "Nairobi_wiki_414",
-        "Nairobi_tourism_5_84",
         "Nairobi_wiki_413",
+        "Nairobi_tourism_5_84",
         "Nairobi_tourism_1_22"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "184",
@@ -4750,7 +5669,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "185",
@@ -4769,13 +5693,18 @@
         "Nairobi_wiki_414",
         "Nairobi_tourism_1_21",
         "Nairobi_wiki_57",
-        "Nairobi_tourism_5_84"
+        "Nairobi_wiki_413"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "186",
@@ -4800,7 +5729,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "187",
@@ -4819,13 +5753,18 @@
         "Nairobi_wiki_254",
         "Nairobi_tourism_3_24",
         "Nairobi_wiki_255",
-        "Nairobi_wiki_253"
+        "Nairobi_tourism_3_22"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "188",
@@ -4850,7 +5789,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "189",
@@ -4867,14 +5811,18 @@
       "retrieved": [
         "Nairobi_wiki_321",
         "Nairobi_wiki_322",
-        "Nairobi_wiki_320",
-        "Nairobi_wiki_323"
+        "Nairobi_wiki_320"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "190",
@@ -4899,7 +5847,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "191",
@@ -4924,7 +5877,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "192",
@@ -4949,7 +5907,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "193",
@@ -4974,7 +5937,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "194",
@@ -4999,7 +5967,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "195",
@@ -5024,7 +5997,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "196",
@@ -5049,7 +6027,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "197",
@@ -5066,40 +6049,44 @@
       "retrieved": [
         "Jakarta_tourism_9_55",
         "Jakarta_wiki_308",
-        "Jakarta_wiki_291",
         "Jakarta_tourism_9_38",
+        "Jakarta_wiki_291",
         "Jakarta_wiki_310"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "198",
       "question": "What nationality was Koningsplein?",
       "city": "Jakarta",
       "question_type": "what",
-      "predicted": "Dutch",
+      "predicted": "",
       "gold": [
         "Dutch"
       ],
-      "em": 1.0,
-      "f1": 1.0,
-      "source_passage": "Jakarta_wiki_121",
-      "retrieved": [
-        "Jakarta_wiki_121",
-        "Jakarta_tourism_4_5",
-        "Jakarta_wiki_147",
-        "Jakarta_tourism_0_7",
-        "Jakarta_wiki_22"
-      ],
-      "recall@1": 1.0,
-      "recall@3": 1.0,
-      "recall@5": 1.0,
-      "recall@10": 1.0,
-      "rr": 1.0
+      "em": 0.0,
+      "f1": 0.0,
+      "source_passage": "",
+      "retrieved": [],
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "199",
@@ -5124,7 +6111,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "200",
@@ -5149,7 +6141,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     }
   ]
 }

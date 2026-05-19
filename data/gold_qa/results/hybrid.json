@@ -3,12 +3,17 @@
   "n_questions": 200,
   "em": 0.765,
   "f1": 0.8506370851370852,
-  "recall@1": 0.335,
-  "recall@3": 0.76,
+  "recall@1": 0.37,
+  "recall@3": 0.755,
   "recall@5": 0.915,
   "recall@10": 0.915,
-  "mrr": 0.5679166666666666,
+  "mrr": 0.585,
   "n_with_gold_passage": 200,
+  "content_recall@1": 0.98,
+  "content_recall@3": 0.985,
+  "content_recall@5": 0.99,
+  "content_recall@10": 0.99,
+  "content_mrr": 0.9826666666666667,
   "by_question_type": {
     "when": {
       "em": 0.7741935483870968,
@@ -177,7 +182,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "002",
@@ -202,7 +212,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "003",
@@ -227,7 +242,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "004",
@@ -242,17 +262,22 @@
       "f1": 0.8,
       "source_passage": "Cairo_wiki_180",
       "retrieved": [
-        "Cairo_tourism_1_60",
         "Cairo_wiki_181",
+        "Cairo_tourism_1_60",
         "Cairo_wiki_180",
         "Cairo_tourism_1_59",
-        "Cairo_tourism_1_61"
+        "Cairo_wiki_182"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
-      "recall@5": 0.0,
-      "recall@10": 0.0,
-      "rr": 0.0
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "005",
@@ -277,7 +302,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "006",
@@ -302,7 +332,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "007",
@@ -327,7 +362,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "008",
@@ -352,7 +392,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "009",
@@ -377,7 +422,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "010",
@@ -402,7 +452,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "011",
@@ -427,7 +482,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "012",
@@ -446,13 +506,18 @@
         "Paris_wiki_374",
         "Paris_wiki_373",
         "Paris_wiki_370",
-        "Paris_wiki_8"
+        "Paris_wiki_371"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "013",
@@ -477,7 +542,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "014",
@@ -502,7 +572,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 0.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.3333333333333333
     },
     {
       "id": "015",
@@ -527,7 +602,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "016",
@@ -552,7 +632,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "017",
@@ -577,7 +662,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "018",
@@ -602,7 +692,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "019",
@@ -627,7 +722,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "020",
@@ -652,7 +752,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "021",
@@ -677,7 +782,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "022",
@@ -702,7 +812,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "023",
@@ -727,7 +842,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "024",
@@ -752,7 +872,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "025",
@@ -777,7 +902,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "026",
@@ -802,7 +932,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "027",
@@ -827,7 +962,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "028",
@@ -852,7 +992,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "029",
@@ -877,7 +1022,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "030",
@@ -902,7 +1052,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "031",
@@ -927,7 +1082,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "032",
@@ -946,13 +1106,18 @@
         "London_wiki_46",
         "London_tourism_0_21",
         "London_wiki_45",
-        "London_wiki_44"
+        "London_tourism_0_20"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "033",
@@ -977,7 +1142,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "034",
@@ -1002,7 +1172,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "035",
@@ -1019,15 +1194,20 @@
       "retrieved": [
         "London_tourism_4_11",
         "London_wiki_257",
-        "London_wiki_256",
         "London_tourism_4_10",
+        "London_wiki_256",
         "London_tourism_4_9"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "036",
@@ -1042,17 +1222,22 @@
       "f1": 1.0,
       "source_passage": "London_wiki_245",
       "retrieved": [
-        "London_wiki_246",
         "London_tourism_4_0",
+        "London_wiki_246",
         "London_wiki_245",
         "London_wiki_244",
-        "London_tourism_4_2"
+        "London_wiki_248"
       ],
-      "recall@1": 1.0,
+      "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "037",
@@ -1077,7 +1262,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "038",
@@ -1102,7 +1292,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "039",
@@ -1115,19 +1310,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "London_tourism_10_3",
+      "source_passage": "London_wiki_577",
       "retrieved": [
-        "London_tourism_10_3",
         "London_wiki_577",
-        "London_tourism_10_2",
+        "London_tourism_10_3",
         "London_wiki_576",
+        "London_tourism_10_2",
         "London_tourism_10_1"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "040",
@@ -1144,15 +1344,20 @@
       "retrieved": [
         "London_tourism_4_99",
         "London_wiki_345",
-        "London_wiki_344",
         "London_tourism_4_98",
+        "London_wiki_344",
         "London_wiki_343"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "041",
@@ -1177,7 +1382,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "042",
@@ -1190,19 +1400,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "New York City_wiki_506",
+      "source_passage": "New York City_tourism_8_76",
       "retrieved": [
-        "New York City_tourism_8_77",
         "New York City_wiki_507",
-        "New York City_wiki_506",
+        "New York City_tourism_8_77",
         "New York City_tourism_8_76",
+        "New York City_wiki_506",
         "New York City_wiki_505"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "043",
@@ -1227,7 +1442,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "044",
@@ -1252,7 +1472,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "045",
@@ -1277,7 +1502,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "046",
@@ -1302,7 +1532,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "047",
@@ -1327,7 +1562,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "048",
@@ -1352,7 +1592,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "049",
@@ -1377,7 +1622,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "050",
@@ -1402,7 +1652,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "051",
@@ -1421,13 +1676,18 @@
         "Istanbul_tourism_5_62",
         "Istanbul_tourism_5_61",
         "Istanbul_wiki_404",
-        "Istanbul_wiki_403"
+        "Istanbul_tourism_5_60"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "052",
@@ -1440,19 +1700,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Istanbul_wiki_429",
+      "source_passage": "Istanbul_tourism_5_87",
       "retrieved": [
         "Istanbul_wiki_427",
         "Istanbul_tourism_5_85",
-        "Istanbul_wiki_429",
         "Istanbul_tourism_5_87",
+        "Istanbul_wiki_429",
         "Istanbul_tourism_5_86"
       ],
       "recall@1": 0.0,
-      "recall@3": 1.0,
+      "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "053",
@@ -1477,7 +1742,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "054",
@@ -1502,7 +1772,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "055",
@@ -1527,7 +1802,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "056",
@@ -1552,7 +1832,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "057",
@@ -1565,19 +1850,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Istanbul_tourism_4_1",
+      "source_passage": "Istanbul_wiki_335",
       "retrieved": [
-        "Istanbul_tourism_4_2",
         "Istanbul_wiki_336",
-        "Istanbul_tourism_4_1",
+        "Istanbul_tourism_4_2",
         "Istanbul_wiki_335",
+        "Istanbul_tourism_4_1",
         "Istanbul_tourism_4_0"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "058",
@@ -1602,7 +1892,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "059",
@@ -1627,7 +1922,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "060",
@@ -1652,7 +1952,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "061",
@@ -1677,7 +1982,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "062",
@@ -1702,7 +2012,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "063",
@@ -1727,7 +2042,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "064",
@@ -1752,7 +2072,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "065",
@@ -1777,7 +2102,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "066",
@@ -1802,7 +2132,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "067",
@@ -1817,17 +2152,22 @@
       "f1": 1.0,
       "source_passage": "Buenos Aires_wiki_295",
       "retrieved": [
-        "Buenos Aires_wiki_296",
         "Buenos Aires_tourism_3_0",
+        "Buenos Aires_wiki_296",
         "Buenos Aires_wiki_295",
         "Buenos Aires_tourism_0_35",
         "Buenos Aires_wiki_43"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "068",
@@ -1852,7 +2192,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "069",
@@ -1877,7 +2222,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "070",
@@ -1902,7 +2252,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "071",
@@ -1927,7 +2282,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "072",
@@ -1952,7 +2312,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "073",
@@ -1977,7 +2342,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "074",
@@ -2002,7 +2372,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "075",
@@ -2027,7 +2402,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "076",
@@ -2052,7 +2432,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "077",
@@ -2077,7 +2462,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "078",
@@ -2102,7 +2492,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "079",
@@ -2121,13 +2516,18 @@
         "Lagos_wiki_424",
         "Lagos_tourism_12_14",
         "Lagos_wiki_432",
-        "Lagos_wiki_430"
+        "Lagos_tourism_12_12"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "080",
@@ -2152,7 +2552,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "081",
@@ -2177,7 +2582,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "082",
@@ -2196,13 +2606,18 @@
         "Mumbai_wiki_160",
         "Mumbai_wiki_159",
         "Mumbai_tourism_0_47",
-        "Mumbai_wiki_161"
+        "Mumbai_tourism_0_49"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "083",
@@ -2227,7 +2642,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "084",
@@ -2252,7 +2672,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "085",
@@ -2277,7 +2702,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "086",
@@ -2290,19 +2720,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Mumbai_tourism_1_6",
+      "source_passage": "Mumbai_wiki_288",
       "retrieved": [
-        "Mumbai_tourism_1_6",
         "Mumbai_wiki_288",
-        "Mumbai_wiki_287",
+        "Mumbai_tourism_1_6",
         "Mumbai_tourism_1_5",
+        "Mumbai_wiki_287",
         "Mumbai_tourism_1_4"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "087",
@@ -2327,7 +2762,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "088",
@@ -2352,7 +2792,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "089",
@@ -2377,7 +2822,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "090",
@@ -2402,7 +2852,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "091",
@@ -2427,7 +2882,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "092",
@@ -2444,15 +2904,20 @@
       "retrieved": [
         "Beijing_tourism_9_146",
         "Beijing_wiki_494",
-        "Beijing_tourism_9_145",
         "Beijing_wiki_493",
+        "Beijing_tourism_9_145",
         "Beijing_tourism_9_144"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "093",
@@ -2477,7 +2942,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "094",
@@ -2502,7 +2972,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "095",
@@ -2527,7 +3002,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "096",
@@ -2544,15 +3024,20 @@
       "retrieved": [
         "Beijing_tourism_3_56",
         "Beijing_wiki_210",
-        "Beijing_tourism_3_55",
         "Beijing_wiki_209",
+        "Beijing_tourism_3_55",
         "Beijing_tourism_9_177"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "097",
@@ -2565,19 +3050,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Beijing_wiki_102",
+      "source_passage": "Beijing_tourism_1_35",
       "retrieved": [
-        "Beijing_tourism_1_36",
         "Beijing_wiki_103",
-        "Beijing_wiki_102",
+        "Beijing_tourism_1_36",
         "Beijing_tourism_1_35",
-        "Beijing_tourism_1_34"
+        "Beijing_wiki_102",
+        "Beijing_wiki_101"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "098",
@@ -2602,7 +3092,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "099",
@@ -2627,7 +3122,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "100",
@@ -2652,7 +3152,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "101",
@@ -2677,7 +3182,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "102",
@@ -2702,7 +3212,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "103",
@@ -2727,7 +3242,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "104",
@@ -2752,7 +3272,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "105",
@@ -2777,7 +3302,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "106",
@@ -2802,7 +3332,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 0.0,
+      "content_recall@10": 0.0,
+      "content_rr": 0.0
     },
     {
       "id": "107",
@@ -2827,7 +3362,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "108",
@@ -2852,7 +3392,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "109",
@@ -2877,7 +3422,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "110",
@@ -2902,7 +3452,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "111",
@@ -2927,7 +3482,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "112",
@@ -2952,7 +3512,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "113",
@@ -2977,7 +3542,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "114",
@@ -3002,7 +3572,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "115",
@@ -3027,7 +3602,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "116",
@@ -3052,7 +3632,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "117",
@@ -3077,7 +3662,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "118",
@@ -3102,7 +3692,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "119",
@@ -3127,7 +3722,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "120",
@@ -3140,19 +3740,24 @@
       ],
       "em": 0.0,
       "f1": 0.6666666666666666,
-      "source_passage": "São Paulo_wiki_430",
+      "source_passage": "São Paulo_tourism_7_67",
       "retrieved": [
-        "São Paulo_wiki_430",
         "São Paulo_tourism_7_67",
-        "São Paulo_tourism_7_66",
+        "São Paulo_wiki_430",
         "São Paulo_wiki_429",
-        "São Paulo_tourism_7_65"
+        "São Paulo_tourism_7_66",
+        "São Paulo_wiki_428"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "121",
@@ -3177,7 +3782,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "122",
@@ -3202,7 +3812,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "123",
@@ -3227,7 +3842,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "124",
@@ -3252,7 +3872,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "125",
@@ -3277,7 +3902,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "126",
@@ -3302,7 +3932,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "127",
@@ -3327,7 +3962,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "128",
@@ -3352,7 +3992,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "129",
@@ -3377,7 +4022,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "130",
@@ -3402,7 +4052,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "131",
@@ -3427,7 +4082,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "132",
@@ -3440,10 +4100,10 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Sydney_wiki_426",
+      "source_passage": "Sydney_tourism_11_0",
       "retrieved": [
-        "Sydney_wiki_426",
         "Sydney_tourism_11_0",
+        "Sydney_wiki_426",
         "Sydney_tourism_11_1",
         "Sydney_wiki_427",
         "Sydney_wiki_425"
@@ -3452,7 +4112,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "133",
@@ -3465,19 +4130,24 @@
       ],
       "em": 0.0,
       "f1": 0.6666666666666666,
-      "source_passage": "Sydney_tourism_15_15",
+      "source_passage": "Sydney_wiki_624",
       "retrieved": [
         "Sydney_wiki_625",
         "Sydney_tourism_15_16",
-        "Sydney_tourism_15_15",
         "Sydney_wiki_624",
-        "Sydney_wiki_623"
+        "Sydney_tourism_15_15",
+        "Sydney_tourism_15_14"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "134",
@@ -3502,7 +4172,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "135",
@@ -3527,7 +4202,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "136",
@@ -3552,7 +4232,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "137",
@@ -3577,7 +4262,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "138",
@@ -3602,7 +4292,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "139",
@@ -3627,7 +4322,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "140",
@@ -3652,7 +4352,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "141",
@@ -3677,7 +4382,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "142",
@@ -3702,7 +4412,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "143",
@@ -3715,19 +4430,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Dubai_wiki_368",
+      "source_passage": "Dubai_tourism_6_22",
       "retrieved": [
         "Dubai_wiki_369",
         "Dubai_tourism_6_23",
-        "Dubai_wiki_368",
         "Dubai_tourism_6_22",
+        "Dubai_wiki_368",
         "Dubai_wiki_367"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "144",
@@ -3752,7 +4472,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "145",
@@ -3777,7 +4502,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "146",
@@ -3802,7 +4532,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "147",
@@ -3827,7 +4562,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "148",
@@ -3852,7 +4592,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "149",
@@ -3877,7 +4622,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "150",
@@ -3902,7 +4652,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "151",
@@ -3927,7 +4682,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "152",
@@ -3952,7 +4712,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "153",
@@ -3977,7 +4742,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "154",
@@ -4002,7 +4772,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "155",
@@ -4027,7 +4802,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "156",
@@ -4052,7 +4832,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "157",
@@ -4077,7 +4862,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "158",
@@ -4102,7 +4892,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "159",
@@ -4127,7 +4922,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "160",
@@ -4152,7 +4952,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "161",
@@ -4177,7 +4982,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "162",
@@ -4202,7 +5012,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "163",
@@ -4227,7 +5042,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "164",
@@ -4252,7 +5072,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "165",
@@ -4277,7 +5102,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "166",
@@ -4296,13 +5126,18 @@
         "Bangkok_wiki_20",
         "Bangkok_tourism_0_8",
         "Bangkok_wiki_21",
-        "Bangkok_tourism_4_39"
+        "Bangkok_tourism_0_6"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
-      "recall@5": 1.0,
-      "recall@10": 1.0,
-      "rr": 0.2
+      "recall@5": 0.0,
+      "recall@10": 0.0,
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "167",
@@ -4327,7 +5162,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "168",
@@ -4343,8 +5183,8 @@
       "source_passage": "Bangkok_wiki_82",
       "retrieved": [
         "Bangkok_wiki_82",
-        "Bangkok_wiki_81",
         "Bangkok_tourism_1_52",
+        "Bangkok_wiki_81",
         "Bangkok_tourism_1_51",
         "Bangkok_wiki_80"
       ],
@@ -4352,7 +5192,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "169",
@@ -4369,15 +5214,20 @@
       "retrieved": [
         "Bangkok_tourism_1_13",
         "Bangkok_wiki_42",
-        "Bangkok_tourism_1_12",
         "Bangkok_wiki_41",
-        "Bangkok_tourism_1_11"
+        "Bangkok_tourism_1_12",
+        "Bangkok_wiki_40"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "170",
@@ -4402,7 +5252,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "171",
@@ -4427,7 +5282,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "172",
@@ -4452,7 +5312,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "173",
@@ -4471,13 +5336,18 @@
         "Toronto_wiki_547",
         "Toronto_wiki_546",
         "Toronto_tourism_10_125",
-        "Toronto_tourism_10_124"
+        "Toronto_wiki_545"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "174",
@@ -4502,7 +5372,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.3333333333333333
+      "rr": 0.3333333333333333,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "175",
@@ -4527,7 +5402,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "176",
@@ -4552,7 +5432,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "177",
@@ -4577,7 +5462,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "178",
@@ -4602,7 +5492,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 0.0,
+      "content_recall@3": 0.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 0.2
     },
     {
       "id": "179",
@@ -4627,7 +5522,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "180",
@@ -4644,15 +5544,20 @@
       "retrieved": [
         "Toronto_tourism_2_3",
         "Toronto_wiki_185",
-        "Toronto_tourism_2_2",
         "Toronto_wiki_184",
-        "Toronto_wiki_183"
+        "Toronto_tourism_2_2",
+        "Toronto_tourism_2_1"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "181",
@@ -4677,7 +5582,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "182",
@@ -4690,19 +5600,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Nairobi_tourism_3_75",
+      "source_passage": "Nairobi_wiki_304",
       "retrieved": [
         "Nairobi_tourism_3_76",
         "Nairobi_wiki_305",
-        "Nairobi_tourism_3_75",
         "Nairobi_wiki_304",
+        "Nairobi_tourism_3_75",
         "Nairobi_tourism_3_74"
       ],
       "recall@1": 0.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "183",
@@ -4727,7 +5642,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "184",
@@ -4752,7 +5672,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "185",
@@ -4777,7 +5702,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "186",
@@ -4802,7 +5732,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "187",
@@ -4827,7 +5762,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.25
+      "rr": 0.25,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "188",
@@ -4852,7 +5792,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "189",
@@ -4877,7 +5822,12 @@
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "190",
@@ -4902,7 +5852,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "191",
@@ -4915,19 +5870,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Jakarta_tourism_6_49",
+      "source_passage": "Jakarta_wiki_201",
       "retrieved": [
-        "Jakarta_tourism_6_49",
         "Jakarta_wiki_201",
-        "Jakarta_wiki_203",
+        "Jakarta_tourism_6_49",
         "Jakarta_tourism_6_51",
+        "Jakarta_wiki_203",
         "Jakarta_tourism_6_50"
       ],
       "recall@1": 0.0,
       "recall@3": 0.0,
       "recall@5": 0.0,
       "recall@10": 0.0,
-      "rr": 0.0
+      "rr": 0.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "192",
@@ -4952,7 +5912,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "193",
@@ -4977,7 +5942,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "194",
@@ -4996,13 +5966,18 @@
         "Jakarta_wiki_360",
         "Jakarta_tourism_11_41",
         "Jakarta_wiki_359",
-        "Jakarta_wiki_358"
+        "Jakarta_tourism_11_40"
       ],
       "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "195",
@@ -5027,7 +6002,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "196",
@@ -5052,7 +6032,12 @@
       "recall@3": 0.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.2
+      "rr": 0.2,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "197",
@@ -5077,7 +6062,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 0.5,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "198",
@@ -5102,7 +6092,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "199",
@@ -5115,19 +6110,24 @@
       ],
       "em": 1.0,
       "f1": 1.0,
-      "source_passage": "Jakarta_tourism_9_31",
+      "source_passage": "Jakarta_wiki_284",
       "retrieved": [
-        "Jakarta_wiki_285",
         "Jakarta_tourism_9_32",
-        "Jakarta_tourism_9_31",
+        "Jakarta_wiki_285",
         "Jakarta_wiki_284",
-        "Jakarta_wiki_283"
+        "Jakarta_tourism_9_31",
+        "Jakarta_tourism_9_30"
       ],
-      "recall@1": 0.0,
+      "recall@1": 1.0,
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 0.5
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     },
     {
       "id": "200",
@@ -5152,7 +6152,12 @@
       "recall@3": 1.0,
       "recall@5": 1.0,
       "recall@10": 1.0,
-      "rr": 1.0
+      "rr": 1.0,
+      "content_recall@1": 1.0,
+      "content_recall@3": 1.0,
+      "content_recall@5": 1.0,
+      "content_recall@10": 1.0,
+      "content_rr": 1.0
     }
   ]
 }

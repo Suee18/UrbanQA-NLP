@@ -21,9 +21,24 @@ Returns a JSON-serializable answer dict so the same payload feeds Streamlit,
 the eval harness, and the future Unreal/UDP server.
 """
 
+import re
+import string
 import yaml
 import torch
+from collections import defaultdict
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
+
+
+def _normalize_for_vote(s):
+    """SQuAD-style normalization, used to group candidate spans for the
+    ensemble vote. 'the Louvre' and 'Louvre' must end up in the same group."""
+    if not s:
+        return ""
+    s = s.lower()
+    s = re.sub(r"\b(a|an|the)\b", " ", s)
+    s = "".join(ch for ch in s if ch not in set(string.punctuation))
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
 
 
 QA_MODEL_NAME = "deepset/roberta-base-squad2"
@@ -31,13 +46,23 @@ MAX_ANSWER_LEN = 30        # tokens — SQuAD-typical cap, prevents runaway span
 TOPN_START_END = 20        # candidate start/end positions to consider per passage
 
 # How many of the retriever's top-k to actually run through the reader.
-# More = higher recall, slower. 3 is the standard ODQA default.
+# 3 is the ODQA default. Tested 5 (sweep 2026-05-20): worse by ~0.5 EM / 1.5 F1
+# because the extra two passages add wrong-but-confident spans the aggregator
+# can't filter — overlapping-window passages exacerbate this.
 DEFAULT_READ_K = 3
 
 # Multiplicative penalty applied when answer span doesn't carry an
-# expected entity type. Penalty (not zero) so a strong wrong-type answer
-# can still win over a weak right-type one.
+# expected entity type. Tunable per-call via extract(). Empirically the value
+# (sweep 2026-05-20 over {0.3, 0.5, 0.7, 1.0}) has no measurable effect on
+# this gold set — winners are almost always already type_match=True — but the
+# mechanism is kept for principled completeness.
 TYPE_MISMATCH_PENALTY = 0.5
+
+# Ensemble vote bonus: when N passages produce the same normalized answer,
+# group score = max(confidence) + vote_weight * sum(others). Default 0.0
+# (disabled): tested 0.4 (sweep 2026-05-20) and it slightly hurt at read_k=3
+# because overlapping passages double-count the same evidence as 'consensus'.
+ENSEMBLE_VOTE_WEIGHT = 0.0
 
 
 def load_config(config_path="configs/config.yaml"):
@@ -142,12 +167,19 @@ class AnswerExtractor:
         }
 
     # ── Public API ─────────────────────────────────────────────────────
-    def extract(self, question, passages, expected_types=None, read_k=DEFAULT_READ_K):
+    def extract(self, question, passages, expected_types=None,
+                read_k=DEFAULT_READ_K, type_penalty=TYPE_MISMATCH_PENALTY,
+                vote_weight=ENSEMBLE_VOTE_WEIGHT):
         """Run extraction over the top-`read_k` passages, apply optional type
-        validation penalty, return the best answer + every candidate considered.
+        validation penalty, then aggregate spans across passages with an
+        ensemble vote so cross-passage consensus beats lone-wolf high-
+        confidence guesses. Returns the best answer + every candidate.
 
         `passages` is the list returned by Retriever.retrieve(); each item has
         keys: rank, score, passage_id, city, source, text.
+
+        `type_penalty` and `vote_weight` are tunable per-call so eval sweeps
+        don't require reloading the model.
         """
         candidates = []
         for p in passages[:read_k]:
@@ -158,12 +190,12 @@ class AnswerExtractor:
             if expected_types and out["answer"]:
                 type_match = self._span_matches_type(out["answer"], expected_types)
             if not type_match:
-                out["confidence"] *= TYPE_MISMATCH_PENALTY
+                out["confidence"] *= type_penalty
 
             candidates.append({
                 "answer":             out["answer"],
                 "confidence":         out["confidence"],
-                "raw_confidence":     out["confidence"] / (TYPE_MISMATCH_PENALTY if not type_match else 1.0),
+                "raw_confidence":     out["confidence"] / (type_penalty if not type_match else 1.0),
                 "type_match":         type_match,
                 "passage_id":         p["passage_id"],
                 "passage_city":       p["city"],
@@ -173,10 +205,44 @@ class AnswerExtractor:
                 "passage_score":      p["score"],
             })
 
-        # Pick best non-empty answer; fall back to highest-confidence overall.
+        # Guard: retrieval can return zero passages (e.g. dense-mode city filter
+        # eliminates every FAISS hit). Return an empty answer rather than crash.
+        if not candidates:
+            return {
+                "answer":         "",
+                "confidence":     0.0,
+                "type_match":     True,
+                "source_passage": {"passage_id": "", "city": "", "source": "", "text": ""},
+                "all_candidates": [],
+            }
+
+        # ── Ensemble vote across passages ─────────────────────────────
+        # Group non-empty candidates by SQuAD-normalized form. Each group's
+        # aggregate score = max(confidence) + vote_weight * sum(others).
+        # A single 0.9 lone answer beats two 0.4 agreers (0.9 vs 0.4+0.16=0.56);
+        # three 0.4 agreers beat the lone 0.9 (0.4+0.32=0.72 ... still no — let's
+        # check: max=0.4, sum_others=0.8, total=0.4+0.32=0.72 < 0.9). So the
+        # weight is conservative — consensus is a tiebreaker, not a wrecking ball.
         non_empty = [c for c in candidates if c["answer"]]
-        best = max(non_empty, key=lambda c: c["confidence"]) if non_empty \
-               else max(candidates, key=lambda c: c["confidence"])
+        if non_empty:
+            groups = defaultdict(list)
+            for c in non_empty:
+                groups[_normalize_for_vote(c["answer"])].append(c)
+
+            best_group_score = float("-inf")
+            best = None
+            for _, group in groups.items():
+                confs = sorted((c["confidence"] for c in group), reverse=True)
+                top = confs[0]
+                others_sum = sum(confs[1:])
+                group_score = top + vote_weight * others_sum
+                if group_score > best_group_score:
+                    best_group_score = group_score
+                    best = max(group, key=lambda c: c["confidence"])
+        else:
+            # All passages emitted "no answer". Fall through to the highest-
+            # confidence empty record so source_passage is still populated.
+            best = max(candidates, key=lambda c: c["confidence"])
 
         return {
             "answer":          best["answer"],

@@ -24,6 +24,7 @@ from src.retrieval.query_processor import (
 )
 from src.retrieval.retriever import Retriever
 from src.qa.extractor import AnswerExtractor
+from src.qa.list_aggregator import aggregate_list_results
 
 
 class UrbanQA:
@@ -73,20 +74,24 @@ class UrbanQA:
             rerank=rerank,
         )
 
-        # 3a. List mode — skip extraction, aggregate entities, return passages.
+        # 3a. List mode — skip extraction, build a ranked evidenced item list.
         if query["is_list_query"]:
-            entities = self._aggregate_entities(passages, top_n=15)
+            items = aggregate_list_results(
+                passages, self.nlp, query,
+                alias_lookup=self.alias_lookup, top_n=10,
+            )
             return {
                 "question":           question,
                 "mode":               mode,
                 "list_mode":          True,
                 "query":              query,
-                "answer":             "",          # no single span; consumers should render passages + entities
+                "answer":             "",          # no single span; consumers should render items + passages
                 "confidence":         0.0,
                 "type_match":         True,
                 "source_passage":     passages[0] if passages else {},
                 "retrieved_passages": passages,
-                "aggregated_entities": entities,    # list of {text, label, count}
+                "list_items":         items,        # ranked items: name, label, score, mentions, aliases, snippet, passage_id, source, passage_rank
+                "aggregated_entities": items,        # legacy alias for older consumers
                 "all_candidates":     [],
             }
 
@@ -108,44 +113,10 @@ class UrbanQA:
             "type_match":         result["type_match"],
             "source_passage":     result["source_passage"],
             "retrieved_passages": passages,
+            "list_items":         [],
             "aggregated_entities": [],
             "all_candidates":     result["all_candidates"],
         }
-
-    def _aggregate_entities(self, passages, top_n=15):
-        """Run NER over the retrieved passages, collect typed-entity mentions,
-        dedupe case-insensitively, count, and return the top-N most frequent.
-
-        Restricted to entity types useful in a 'list things in X' answer:
-        FAC (buildings, museums), LOC (geographic features), GPE (cities),
-        ORG (institutions, teams, companies), EVENT, WORK_OF_ART, PRODUCT.
-
-        We re-NER at query time rather than reading entities from the
-        on-disk passages because the retriever's metadata is intentionally
-        lightweight (no entities/POS) — a freshly tagged 5-passage list takes
-        ~150 ms with the already-loaded spaCy model, which is fine here.
-        """
-        from collections import Counter
-        WANTED = {"FAC", "LOC", "GPE", "ORG", "EVENT", "WORK_OF_ART", "PRODUCT"}
-
-        counts = Counter()
-        first_label = {}
-        for p in passages:
-            doc = self.nlp(p["text"])
-            for ent in doc.ents:
-                if ent.label_ not in WANTED:
-                    continue
-                key = ent.text.strip().lower()
-                if len(key) < 2:
-                    continue
-                counts[key] += 1
-                if key not in first_label:
-                    first_label[key] = (ent.text.strip(), ent.label_)
-
-        return [
-            {"text": first_label[k][0], "label": first_label[k][1], "count": c}
-            for k, c in counts.most_common(top_n)
-        ]
 
 
 def _format_human(payload):
@@ -157,20 +128,27 @@ def _format_human(payload):
         f"type: {q['question_type']}  mode: {payload['mode']}",
     ]
 
-    # List-mode rendering: skip the single-span "answer" (always empty),
-    # show the aggregated entities and a brief summary of the retrieved
-    # passages. Honest "here's what I found" instead of forcing a wrong span.
+    # List-mode rendering: ranked items with evidence snippets and source
+    # citations. Honest "here's what I found" instead of forcing a wrong span.
     if payload.get("list_mode"):
         lines.append("")
-        lines.append("List question detected — extractive QA can't synthesize lists.")
-        lines.append("Showing what was found across the most relevant passages:")
-        if payload.get("aggregated_entities"):
+        lines.append("List question — returning ranked items with supporting evidence:")
+        items = payload.get("list_items") or payload.get("aggregated_entities") or []
+        if items:
             lines.append("")
-            lines.append("Mentioned across passages (top entities by frequency):")
-            for e in payload["aggregated_entities"]:
-                lines.append(f"  · {e['text']:30s} [{e['label']}]  ×{e['count']}")
+            for i, it in enumerate(items, start=1):
+                aliases = f"  (aka {', '.join(it['aliases'])})" if it.get("aliases") else ""
+                lines.append(f"  {i:2d}. {it['name']}  [{it['label']}]"
+                             f"  score={it['score']:.2f}  ×{it['mentions']}{aliases}")
+                snippet = it.get("snippet", "").replace("\n", " ").strip()
+                if len(snippet) > 220:
+                    snippet = snippet[:217] + "…"
+                lines.append(f"       \"{snippet}\"")
+                lines.append(f"       — {it.get('passage_id', '?')} ({it.get('source', '?')}, rank {it.get('passage_rank', '?')})")
+        else:
+            lines.append("  (no entities surfaced from retrieved passages)")
         lines.append("")
-        lines.append(f"Top {len(payload['retrieved_passages'])} passages:")
+        lines.append(f"Underlying passages ({len(payload['retrieved_passages'])}):")
         for p in payload["retrieved_passages"]:
             snippet = p["text"][:160].replace("\n", " ").strip()
             lines.append(f"  [{p['rank']}] {p['passage_id']}  ({p['source']})")

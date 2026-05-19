@@ -89,6 +89,34 @@ def reciprocal_rank(retrieved_passage_ids, gold_passage_id):
     return 0.0
 
 
+# Content-overlap variant: with sliding-window passages (window=3, stride=1),
+# the gold answer often lives in passages adjacent to the labeled gold_passage_id.
+# Strict-ID recall scores those retrievals as misses even though the system
+# actually found the answer. Content-overlap recall checks whether the gold
+# answer string appears in any retrieved passage's text — a more honest measure
+# of whether retrieval worked.
+def _answer_in_text(gold_answer, passage_text):
+    return normalize_answer(gold_answer) in normalize_answer(passage_text)
+
+
+def content_recall_at_k(retrieved_passages, golds, k):
+    """1 if any gold answer string appears in any of the top-k retrieved passages."""
+    for p in retrieved_passages[:k]:
+        text = p.get("text", "")
+        if any(_answer_in_text(g, text) for g in golds):
+            return 1.0
+    return 0.0
+
+
+def content_reciprocal_rank(retrieved_passages, golds):
+    """1 / rank-of-first-passage-containing-any-gold-answer. 0 if none do."""
+    for i, p in enumerate(retrieved_passages, start=1):
+        text = p.get("text", "")
+        if any(_answer_in_text(g, text) for g in golds):
+            return 1.0 / i
+    return 0.0
+
+
 # ── Gold loader ────────────────────────────────────────────────────────
 
 def load_gold(path):
@@ -111,7 +139,8 @@ def get_golds(item):
 
 def evaluate_system(gold_items, retriever, extractor, query_processor_fn,
                     cities, nlp, alias_lookup, mode="hybrid",
-                    top_k=5, retrieve_k=20, rerank=True, read_k=3):
+                    top_k=5, retrieve_k=20, rerank=True, read_k=3,
+                    type_penalty=None, vote_weight=None):
     """Run every gold question through the system and accumulate metrics.
 
     Returns:
@@ -120,11 +149,13 @@ def evaluate_system(gold_items, retriever, extractor, query_processor_fn,
         "n_questions": int,
         "em": float,
         "f1": float,
-        "recall@1/3/5/10": float,    # only over items with gold_passage_id
-        "mrr": float,                  # only over items with gold_passage_id
+        "recall@1/3/5/10": float,        # strict passage-ID; only items w/ gold_passage_id
+        "mrr": float,                      # strict passage-ID
+        "content_recall@1/3/5/10": float,  # gold answer substring in any retrieved passage
+        "content_mrr": float,              # 1 / rank of first passage containing gold answer
         "by_question_type": { type: {em, f1, n}, ... },
         "by_city":          { city: {em, f1, n}, ... },
-        "per_item":         [ { id, em, f1, recall@k, rr, predicted, ... }, ... ],
+        "per_item":         [ { id, em, f1, recall@k, rr, content_recall@k, content_rr, predicted, ... }, ... ],
       }
     """
     per_item = []
@@ -150,11 +181,15 @@ def evaluate_system(gold_items, retriever, extractor, query_processor_fn,
             q, city=detected_city, mode=mode,
             top_k=top_k, retrieve_k=retrieve_k, rerank=rerank,
         )
-        result = extractor.extract(
-            q, passages,
-            expected_types=qproc["expected_entity_types"],
-            read_k=read_k,
-        )
+        extract_kwargs = {
+            "expected_types": qproc["expected_entity_types"],
+            "read_k": read_k,
+        }
+        if type_penalty is not None:
+            extract_kwargs["type_penalty"] = type_penalty
+        if vote_weight is not None:
+            extract_kwargs["vote_weight"] = vote_weight
+        result = extractor.extract(q, passages, **extract_kwargs)
 
         # Score
         em = exact_match(result["answer"], golds)
@@ -179,6 +214,12 @@ def evaluate_system(gold_items, retriever, extractor, query_processor_fn,
             record["recall@5"]  = recall_at_k(retrieved_pids, gold_pid, 5)
             record["recall@10"] = recall_at_k(retrieved_pids, gold_pid, 10)
             record["rr"]        = reciprocal_rank(retrieved_pids, gold_pid)
+
+        record["content_recall@1"]  = content_recall_at_k(passages, golds, 1)
+        record["content_recall@3"]  = content_recall_at_k(passages, golds, 3)
+        record["content_recall@5"]  = content_recall_at_k(passages, golds, 5)
+        record["content_recall@10"] = content_recall_at_k(passages, golds, 10)
+        record["content_rr"]        = content_reciprocal_rank(passages, golds)
 
         per_item.append(record)
 
@@ -211,6 +252,13 @@ def evaluate_system(gold_items, retriever, extractor, query_processor_fn,
         out["recall@10"] = sum(r["recall@10"] for r in with_gold_pid) / m
         out["mrr"]       = sum(r["rr"]        for r in with_gold_pid) / m
         out["n_with_gold_passage"] = m
+
+    # Content-overlap metrics are computed for every item (no gold_passage_id needed).
+    out["content_recall@1"]  = sum(r["content_recall@1"]  for r in per_item) / n
+    out["content_recall@3"]  = sum(r["content_recall@3"]  for r in per_item) / n
+    out["content_recall@5"]  = sum(r["content_recall@5"]  for r in per_item) / n
+    out["content_recall@10"] = sum(r["content_recall@10"] for r in per_item) / n
+    out["content_mrr"]       = sum(r["content_rr"]        for r in per_item) / n
 
     out["by_question_type"] = {
         qt: {"em": v["em"]/v["n"], "f1": v["f1"]/v["n"], "n": v["n"]}
@@ -274,9 +322,8 @@ if __name__ == "__main__":
         save_results(results, os.path.join(out_dir, f"{mode}.json"))
         print(f"  EM={results['em']:.3f}  F1={results['f1']:.3f}", end="")
         if "recall@5" in results:
-            print(f"  R@5={results['recall@5']:.3f}  MRR={results['mrr']:.3f}")
-        else:
-            print()
+            print(f"  R@5={results['recall@5']:.3f}  MRR={results['mrr']:.3f}", end="")
+        print(f"  cR@5={results['content_recall@5']:.3f}  cMRR={results['content_mrr']:.3f}")
         results_summary.append({k: results[k] for k in results if k not in ("per_item",)})
 
     print("\n=== Summary ===")
