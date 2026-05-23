@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "germany_rag": "./rag/studio_graph.py:graph",
+    "germany_rag_chat": "./rag/chat_graph.py:graph"
+  },
+  "env": ".env"
+}

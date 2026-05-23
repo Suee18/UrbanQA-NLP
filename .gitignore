@@ -1,10 +1,21 @@
-data/raw/
-data/indexes/
+# Python
 __pycache__/
 *.pyc
-.env
 *.egg-info/
+
+# Secrets
+.env
+
+# Virtual environments
 venv/
+venv-studio/
 
+# LangGraph dev server runtime cache
+.langgraph_api/
 
-data/processed/
+# Agent Chat UI (Node)
+agent-chat-ui/node_modules/
+agent-chat-ui/.next/
+
+# Claude Code internal
+.claude/
